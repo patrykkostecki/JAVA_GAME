@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("SZYMON CZERNIAK CWEL ESSA");
+        System.out.println("Patryk Kostecki CWEL ESSA");
     }
 
 }
