@@ -24,16 +24,16 @@ public class Player {
 
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W: // lub VK_UP dla strzałki w górę
                 upPressed = true;
                 break;
-            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S: // lub VK_DOWN dla strzałki w dół
                 downPressed = true;
                 break;
-            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A: // lub VK_LEFT dla strzałki w lewo
                 leftPressed = true;
                 break;
-            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D: // lub VK_RIGHT dla strzałki w prawo
                 rightPressed = true;
                 break;
         }
@@ -41,16 +41,16 @@ public class Player {
 
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W: // lub VK_UP dla strzałki w górę
                 upPressed = false;
                 break;
-            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S: // lub VK_DOWN dla strzałki w dół
                 downPressed = false;
                 break;
-            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A: // lub VK_LEFT dla strzałki w lewo
                 leftPressed = false;
                 break;
-            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D: // lub VK_RIGHT dla strzałki w prawo
                 rightPressed = false;
                 break;
         }
