@@ -33,19 +33,30 @@ public class Player extends Entity{
 
         try {
 
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_2.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player/TYŁ_0.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player/TYŁ_1.png"));
+            up3 = ImageIO.read(getClass().getResourceAsStream("/player/TYŁ_2.png"));
+            up4 = ImageIO.read(getClass().getResourceAsStream("/player/TYŁ_3.png"));
 
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/PRZÓD_0.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/PRZÓD_1.png"));
+            down3 = ImageIO.read(getClass().getResourceAsStream("/player/PRZÓD_2.png"));
+            down4 = ImageIO.read(getClass().getResourceAsStream("/player/PRZÓD_3.png"));
 
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/LEWO_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/LEWO_2.png"));
+            left3 = ImageIO.read(getClass().getResourceAsStream("/player/LEWO_3.png"));
+            left4 = ImageIO.read(getClass().getResourceAsStream("/player/LEWO_4.png"));
 
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/PRAWO_0.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/PRAWO_1.png"));
+            right3 = ImageIO.read(getClass().getResourceAsStream("/player/PRAWO_2.png"));
+            right4 = ImageIO.read(getClass().getResourceAsStream("/player/PRAWO_3.png"));
 
-            standing = ImageIO.read((getClass().getResourceAsStream("/player/boy_down_2.png")));
+            standing1 = ImageIO.read((getClass().getResourceAsStream("/player/STANIE_0.png")));
+            standing2 = ImageIO.read((getClass().getResourceAsStream("/player/STANIE_1.png")));
+            standing3 = ImageIO.read((getClass().getResourceAsStream("/player/STANIE_2.png")));
+            standing4 = ImageIO.read((getClass().getResourceAsStream("/player/STANIE_3.png")));
 
 
 
@@ -54,82 +65,101 @@ public class Player extends Entity{
         }
     }
 
-    public void update(){
-        if (keyH.upPressed){
+    public void update() {
+        if (keyH.upPressed) {
             direction = "up";
             y -= speed;
-        } else if (keyH.downPressed){
+        } else if (keyH.downPressed) {
             direction = "down";
             y += speed;
-        } else if (keyH.leftPressed){
+        } else if (keyH.leftPressed) {
             direction = "left";
             x -= speed;
-        } else if (keyH.rightPressed){
+        } else if (keyH.rightPressed) {
             direction = "right";
             x += speed;
-        } else{
+        } else {
             direction = "standing";
         }
 
         spriteCounter++;
-        if (spriteCounter > 10){
-            if (spriteNumber == 1){
-                spriteNumber = 2;
-            } else if (spriteNumber == 2){
+        if (spriteCounter > 10) {
+            spriteNumber++;
+            if (spriteNumber > 4) {
                 spriteNumber = 1;
             }
             spriteCounter = 0;
         }
     }
 
-    public void draw(Graphics2D g2){
-//        g2.setColor(Color.white);
-//        g2.fillRect(x,y, gp.tileSize, gp.tileSize);
-
+    public void draw(Graphics2D g2) {
         BufferedImage image = null;
+
         switch (direction) {
             case "up":
-                if (spriteNumber == 1){
+                if (spriteNumber == 1) {
                     image = up1;
-                } else if(spriteNumber == 2){
+                } else if (spriteNumber == 2) {
                     image = up2;
+                } else if (spriteNumber == 3) {
+                    image = up3;
+                } else if (spriteNumber == 4) {
+                    image = up4;
                 }
                 break;
 
             case "down":
-                if (spriteNumber == 1){
+                if (spriteNumber == 1) {
                     image = down1;
-                } else if(spriteNumber == 2){
+                } else if (spriteNumber == 2) {
                     image = down2;
+                } else if (spriteNumber == 3) {
+                    image = down3;
+                } else if (spriteNumber == 4) {
+                    image = down4;
                 }
                 break;
 
             case "left":
-                if (spriteNumber == 1){
+                if (spriteNumber == 1) {
                     image = left1;
-                } else if(spriteNumber == 2){
+                } else if (spriteNumber == 2) {
                     image = left2;
+                } else if (spriteNumber == 3) {
+                    image = left3;
+                } else if (spriteNumber == 4) {
+                    image = left4;
                 }
                 break;
 
             case "right":
-                if (spriteNumber == 1){
+                if (spriteNumber == 1) {
                     image = right1;
-                } else if(spriteNumber == 2){
+                } else if (spriteNumber == 2) {
                     image = right2;
+                } else if (spriteNumber == 3) {
+                    image = right3;
+                } else if (spriteNumber == 4) {
+                    image = right4;
                 }
                 break;
 
             case "standing":
-                if (spriteNumber == 1){
-                    image = standing;
-                } else if(spriteNumber == 2){
-                    image = standing;
+                if (spriteNumber == 1) {
+                    image = standing1;
+                } else if (spriteNumber == 2) {
+                    image = standing2;
+                } else if (spriteNumber == 3) {
+                    image = standing3;
+                } else if (spriteNumber == 4) {
+                    image = standing4;
                 }
-        }
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+                break;
         }
 
+        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
     }
+    }
+
 
 
