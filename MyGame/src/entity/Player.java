@@ -11,6 +11,11 @@ import java.io.IOException;
 
 public class Player extends Entity{
 
+    private int originalWidth;
+    private int originalHeight;
+    private int scaledWidth;
+    private int scaledHeight;
+
     GamePanel gp;
     KeyHandler keyH;
 
@@ -26,6 +31,8 @@ public class Player extends Entity{
 
         setDefaultValues();
         getPlayerImage();
+
+        solidArea = new Rectangle(8, 16, 48, 48);
     }
 
     public void setDefaultValues(){
@@ -74,18 +81,40 @@ public class Player extends Entity{
     public void update() {
         if (keyH.upPressed) {
             direction = "up";
-            worldY -= speed;
+
         } else if (keyH.downPressed) {
             direction = "down";
-            worldY += speed;
+
         } else if (keyH.leftPressed) {
             direction = "left";
-            worldX -= speed;
+
         } else if (keyH.rightPressed) {
             direction = "right";
-            worldX += speed;
+
         } else {
             direction = "standing";
+        }
+
+        //SPRAWDZANIE KOLIZJI
+        colissionOn = false;
+        gp.ck.checkTile(this);
+
+        if(colissionOn == false){
+            switch(direction){
+                case "up":
+                    worldY -= speed;
+                    break;
+                case "down":
+                    worldY += speed;
+                    break;
+                case "left":
+                    worldX -= speed;
+                    break;
+                case "right":
+                    worldX += speed;
+                    break;
+
+            }
         }
 
         spriteCounter++;
@@ -163,7 +192,7 @@ public class Player extends Entity{
                 break;
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize +50, gp.tileSize+50, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize * 2, gp.tileSize * 2, null);
     }
     }
 
