@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public ColissionChecker ck = new ColissionChecker(this);
     public Sound sound = new Sound();
+    public UI ui = new UI(this);
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
     public AssetSetter ac = new AssetSetter(this);
@@ -108,7 +109,9 @@ public class GamePanel extends JPanel implements Runnable{
         }
         player.draw(g2);
 
-         g2.dispose();
+        ui.draw(g2);
+
+        g2.dispose();
     }
 
     public void playMusic(int i){
