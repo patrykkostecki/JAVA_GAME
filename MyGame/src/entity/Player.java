@@ -32,7 +32,7 @@ public class Player extends Entity{
         setDefaultValues();
         getPlayerImage();
 
-        solidArea = new Rectangle(8, 16, 48, 48);
+        solidArea = new Rectangle(24, 48, 48, 48);
     }
 
     public void setDefaultValues(){
