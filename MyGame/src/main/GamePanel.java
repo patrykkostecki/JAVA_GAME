@@ -31,6 +31,7 @@ public class GamePanel extends JPanel implements Runnable{
     public ColissionChecker ck = new ColissionChecker(this);
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
+    public AssetSetter ac = new AssetSetter(this);
     TileManager tileM = new TileManager(this);
 
     
@@ -42,6 +43,10 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);
 
 
+    }
+
+    public void setupGame(){
+        ac.setObject();
     }
 
     public void startGameThread(){
@@ -75,7 +80,7 @@ public class GamePanel extends JPanel implements Runnable{
                 }
 
             if (timer >= 1000000000){
-                System.out.println("FPS: " + drawCount);
+                // System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -98,6 +103,13 @@ public class GamePanel extends JPanel implements Runnable{
          Graphics2D g2 = (Graphics2D)g;
 
         tileM.draw(g2);
+
+        for(int i=0; i<obj.length; i++){
+            if(obj[i] != null){
+                obj[i].draw(g2, this);
+            }
+        }
+
         player.draw(g2);
 
          g2.dispose();

@@ -13,6 +13,7 @@ public class Game extends JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setTitle("GOTY 2025");
+        panel.setupGame();
         panel.startGameThread();
 
 
