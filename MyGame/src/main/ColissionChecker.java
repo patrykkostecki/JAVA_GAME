@@ -41,24 +41,24 @@ public class ColissionChecker {
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if(gp.tileM.tile[tileNum1].colission == true || gp.tileM.tile[tileNum2].colission == true) {
                     entity.colissionOn = true;
-                    break;
                 }
+                break;
             case "left":
                 entityLeftCol = (entityLeftWorldX - entity.speed)/(gp.tileSize);
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
                 if(gp.tileM.tile[tileNum1].colission == true || gp.tileM.tile[tileNum2].colission == true) {
                     entity.colissionOn = true;
-                    break;
                 }
+                break;
             case "right":
                 entityRightCol = (entityRightWorldX + entity.speed)/(gp.tileSize);
                 tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                 if(gp.tileM.tile[tileNum1].colission == true || gp.tileM.tile[tileNum2].colission == true) {
                     entity.colissionOn = true;
-                    break;
                 }
+                break;
         }
 
     }
