@@ -156,6 +156,8 @@ public class Player extends Entity{
                     }
                     break;
                 case "Desk":
+                    gp.obj[i] = null;
+                    this.speed = 10;
                     break;
             }
         }
