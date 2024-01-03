@@ -1,6 +1,7 @@
 package main;
 
 import object.Desk;
+import object.Finish;
 import object.Key;
 import object.Door;
 
@@ -25,6 +26,10 @@ public class AssetSetter {
         gp.obj[2] = new Door();
         gp.obj[2].worldX = 25 * gp.tileSize;
         gp.obj[2].worldY = 7 * gp.tileSize;
+
+        gp.obj[3] = new Finish();
+        gp.obj[3].worldX = 16 * gp.tileSize;
+        gp.obj[3].worldY = 51 * gp.tileSize;
 
     }
 

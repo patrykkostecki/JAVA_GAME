@@ -13,6 +13,7 @@ public class UI {
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
+    public boolean gameFinished = false;
 
     public UI(GamePanel gp){
         this.gp = gp;
@@ -36,11 +37,11 @@ public class UI {
         g2.drawString("  : " + gp.player.hasKey, 60 ,60);
         g2.drawString("Speed: "+ gp.player.speed, 550, 60);
 
-        //TEXT MSG
+        // TEXT MSG
         if (messageOn == true){
 
             g2.setFont(g2.getFont().deriveFont(30F));
-            g2.drawString(message, gp.tileSize * 3, gp.tileSize * 4);
+            g2.drawString(message, gp.tileSize * 4, gp.tileSize * 5);
 
             messageCounter ++;
 

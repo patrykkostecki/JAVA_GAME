@@ -155,6 +155,8 @@ public class Player extends Entity{
                         hasKey --;
                         gp.playSoundEffect(2);
                         System.out.println(hasKey);
+                    } else{
+                        gp.ui.showMessage("Potrzebujesz klucza!");
                     }
                     break;
                 case "Desk":
