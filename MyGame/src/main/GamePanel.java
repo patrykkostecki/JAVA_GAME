@@ -1,6 +1,7 @@
 package main;
 
 import entity.Player;
+import object.SuperObject;
 import tile.Tile;
 import tile.TileManager;
 
@@ -29,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public ColissionChecker ck = new ColissionChecker(this);
     public Player player = new Player(this, keyH);
+    public SuperObject obj[] = new SuperObject[10];
     TileManager tileM = new TileManager(this);
 
     
