@@ -18,7 +18,7 @@ public class TileManager {
     public TileManager(GamePanel gp){
 
         this.gp = gp;
-        tile = new Tile[10];
+        tile = new Tile[50];
         getTileImage();
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         loadMap();
@@ -33,18 +33,21 @@ public class TileManager {
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grassv2.png"));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/ciana_Cegla_Jasna.png"));
-
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sciana_Cegla_Jasna.png"));
+            tile[1].colission = true;
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/SCIANA_SZKLO.png"));
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Glass_wall.png"));
             tile[2].colission = true;
 
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grassv2.png"));
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/P_Jasna.png"));
 //
             tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Glass_wall.png"));
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/doors/Drzwi_Dol_Dol.png"));
+
+            tile[44] = new Tile();
+            tile[44].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Glass_wall.png"));
 //
             tile[5] = new Tile();
             tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Schody_lewo.png"));
@@ -52,6 +55,20 @@ public class TileManager {
             tile[6] = new Tile();
             tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Schody_prawe.png"));
 
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Schody_prawe.png"));
+
+            tile[8] = new Tile();
+            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/P_Ciemna.png"));
+
+            tile[10] = new Tile();
+            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/smoking_plate.png"));
+
+            tile[9] = new Tile();
+            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wood.png"));
+
+            tile[11] = new Tile();
+            tile[11].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wood2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
