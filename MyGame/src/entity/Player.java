@@ -46,30 +46,30 @@ public class Player extends Entity{
 
         try {
 
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/TYŁ_0.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/TYŁ_1.png"));
-            up3 = ImageIO.read(getClass().getResourceAsStream("/player/TYŁ_2.png"));
-            up4 = ImageIO.read(getClass().getResourceAsStream("/player/TYŁ_3.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/tyl0.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/tyl1.png"));
+            up3 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/tyl2.png"));
+            up4 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/tyl3.png"));
 
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/PRZÓD_0.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/PRZÓD_1.png"));
-            down3 = ImageIO.read(getClass().getResourceAsStream("/player/PRZÓD_2.png"));
-            down4 = ImageIO.read(getClass().getResourceAsStream("/player/PRZÓD_3.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/przod0.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/przod1.png"));
+            down3 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/przod2.png"));
+            down4 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/przod3.png"));
 
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/LEWO_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/LEWO_2.png"));
-            left3 = ImageIO.read(getClass().getResourceAsStream("/player/LEWO_3.png"));
-            left4 = ImageIO.read(getClass().getResourceAsStream("/player/LEWO_4.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/lewo0.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/lewo1.png"));
+            left3 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/lewo2.png"));
+            left4 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/lewo3.png"));
 
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/PRAWO_0.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/PRAWO_1.png"));
-            right3 = ImageIO.read(getClass().getResourceAsStream("/player/PRAWO_2.png"));
-            right4 = ImageIO.read(getClass().getResourceAsStream("/player/PRAWO_3.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/prawo0.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/prawo1.png"));
+            right3 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/prawo2.png"));
+            right4 = ImageIO.read(getClass().getResourceAsStream("/player/Leokadia/prawo3.png"));
 
-            standing1 = ImageIO.read((getClass().getResourceAsStream("/player/STANIE_0.png")));
-            standing2 = ImageIO.read((getClass().getResourceAsStream("/player/STANIE_1.png")));
-            standing3 = ImageIO.read((getClass().getResourceAsStream("/player/STANIE_2.png")));
-            standing4 = ImageIO.read((getClass().getResourceAsStream("/player/STANIE_3.png")));
+            standing1 = ImageIO.read((getClass().getResourceAsStream("/player/Leokadia/stanie0.png")));
+            standing2 = ImageIO.read((getClass().getResourceAsStream("/player/Leokadia/stanie1.png")));
+            standing3 = ImageIO.read((getClass().getResourceAsStream("/player/Leokadia/stanie2.png")));
+            standing4 = ImageIO.read((getClass().getResourceAsStream("/player/Leokadia/stanie3.png")));
 
 
 
