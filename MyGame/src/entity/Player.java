@@ -146,6 +146,7 @@ public class Player extends Entity{
                 case "Key":
                     hasKey ++;
                     gp.obj[i] = null;
+                    gp.playSoundEffect(1);
                     System.out.println(hasKey);
                     break;
                 case "Door":
