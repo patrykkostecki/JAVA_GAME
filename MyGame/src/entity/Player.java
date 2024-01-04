@@ -162,6 +162,10 @@ public class Player extends Entity{
                 case "Desk":
                     gp.ui.showMessage("Porwano DENDZIORA!");
                     break;
+                case "EatAutomat":
+                    gp.player.speed = 6;
+                    gp.ui.showMessage("Speed up!");
+                    //gp.obj[i] = null;
             }
         }
     }
