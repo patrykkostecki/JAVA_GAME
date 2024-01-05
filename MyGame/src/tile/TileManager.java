@@ -18,7 +18,7 @@ public class TileManager {
     public TileManager(GamePanel gp){
 
         this.gp = gp;
-        tile = new Tile[50];
+        tile = new Tile[60];
         getTileImage();
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         loadMap();
@@ -155,6 +155,22 @@ public class TileManager {
 
             tile[42] = new Tile();
             tile[42].image = ImageIO.read(getClass().getResourceAsStream("/tiles/schody_barrier_2.png"));
+
+            //ARENA
+            tile[50] = new Tile();
+            tile[50].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arena.png"));
+
+            tile[51] = new Tile();
+            tile[51].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arena_barrier_0.png"));
+
+            tile[52] = new Tile();
+            tile[52].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arena_barrier_1.png"));
+
+            tile[53] = new Tile();
+            tile[53].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arena_barrier_2.png"));
+
+            tile[54] = new Tile();
+            tile[54].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arena_barrier_3.png"));
 
 
         } catch (IOException e) {
