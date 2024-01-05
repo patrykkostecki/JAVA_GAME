@@ -49,7 +49,7 @@ public class Player extends Entity{
     public void setDefaultValues(){
          worldX = 1650;
          worldY = -10;
-         speed = 30;
+         speed = 4;
          direction = "down";
     }
 
@@ -170,6 +170,10 @@ public class Player extends Entity{
                     gp.player.speed = 6;
                     gp.ui.showMessage("Speed up!");
                     //gp.obj[i] = null;
+                    break;
+                case "Finish":
+                    gp.ui.gameFinished = true;
+                    break;
             }
         }
     }
@@ -240,7 +244,28 @@ public class Player extends Entity{
 
         }
 
-        g2.drawImage(image, screenX, screenY, gp.tileSize * 2, gp.tileSize * 2, null);
+        int x = screenX;
+        int y = screenY;
+
+        if(screenX > worldX){
+            x = worldX;
+        }
+
+        if(screenY > worldY){
+            y = worldY;
+        }
+
+        int rightStop = gp.screenWidth - screenX;
+        if(rightStop > gp.worldWidth - worldX){
+            x = gp.screenWidth - (gp.worldWidth - worldX);
+        }
+
+        int bottomStop = gp.screenHeight - screenY;
+        if(bottomStop > gp.worldHeight - worldY){
+            y = gp.screenHeight - (gp.worldHeight - worldY);
+        }
+
+        g2.drawImage(image, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
     }
     }
 

@@ -14,14 +14,14 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTitleSize = 16; // 16 x 16 tile
     final int scale = 3;
     public final int tileSize = originalTitleSize * scale; // 48 x 48 tile
-    public final int maxScreenCol = 40;
-    public final int maxScreenRow = 22;
+    public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol; //768
     public final int screenHeight = tileSize * maxScreenRow; //576
 
     //USTAWIENIA MAPY
     public final int maxWorldCol = 73;
-    public final int maxWorldRow = 90;
+    public final int maxWorldRow = 97;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
@@ -35,6 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
     public SuperObject obj[] = new SuperObject[10];
     public AssetSetter ac = new AssetSetter(this);
     TileManager tileM = new TileManager(this);
+
 
     
     public GamePanel(){
@@ -100,8 +101,8 @@ public class GamePanel extends JPanel implements Runnable{
 
          Graphics2D g2 = (Graphics2D)g;
         // Włączenie antyaliasingu
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+//        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
         tileM.draw(g2);
 

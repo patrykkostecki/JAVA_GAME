@@ -18,7 +18,7 @@ public class TileManager {
     public TileManager(GamePanel gp){
 
         this.gp = gp;
-        tile = new Tile[60];
+        tile = new Tile[80];
         getTileImage();
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         loadMap();
@@ -35,6 +35,9 @@ public class TileManager {
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sciana_Uczelnia.png"));
             tile[1].colission = true;
+
+            tile[70] = new Tile();
+            tile[70].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sciana_Uczelnia.png"));
 
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Glass_wall.png"));
@@ -100,61 +103,79 @@ public class TileManager {
             //Flowers
             tile[20] = new Tile();
             tile[20].image = ImageIO.read(getClass().getResourceAsStream("/tiles/flowers_3.png"));
+            tile[20].colission = true;
 
             tile[21] = new Tile();
             tile[21].image = ImageIO.read(getClass().getResourceAsStream("/tiles/flowers_1.png"));
+            tile[21].colission = true;
 
             tile[22] = new Tile();
             tile[22].image = ImageIO.read(getClass().getResourceAsStream("/tiles/flowers_2.png"));
+            tile[22].colission = true;
 
             tile[23] = new Tile();
             tile[23].image = ImageIO.read(getClass().getResourceAsStream("/tiles/flowers_0.png"));
+            tile[23].colission = true;
 
             //Barrier
             tile[25] = new Tile();
             tile[25].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barrier_0.png"));
+            tile[25].colission = true;
 
             tile[26] = new Tile();
             tile[26].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barrier_1.png"));
+            tile[26].colission = true;
 
             tile[27] = new Tile();
             tile[27].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barrier_2.png"));
+            tile[27].colission = true;
 
             tile[28] = new Tile();
             tile[28].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barrier_3.png"));
+            tile[28].colission = true;
 
             //Bench
             tile[30] = new Tile();
             tile[30].image = ImageIO.read(getClass().getResourceAsStream("/tiles/bench_0.png"));
+            tile[30].colission = true;
 
             tile[31] = new Tile();
             tile[31].image = ImageIO.read(getClass().getResourceAsStream("/tiles/bench_1.png"));
+            tile[31].colission = true;
 
             tile[32] = new Tile();
             tile[32].image = ImageIO.read(getClass().getResourceAsStream("/tiles/bench_2.png"));
+            tile[32].colission = true;
 
             //Banners
             tile[35] = new Tile();
             tile[35].image = ImageIO.read(getClass().getResourceAsStream("/tiles/banner_0.png"));
+            tile[35].colission = true;
 
             tile[36] = new Tile();
             tile[36].image = ImageIO.read(getClass().getResourceAsStream("/tiles/banner_1.png"));
+            tile[36].colission = true;
 
             tile[37] = new Tile();
             tile[37].image = ImageIO.read(getClass().getResourceAsStream("/tiles/banner_2.png"));
+            tile[37].colission = true;
 
             tile[38] = new Tile();
             tile[38].image = ImageIO.read(getClass().getResourceAsStream("/tiles/banner_3.png"));
+            tile[38].colission = true;
 
             //Schody Barrier
             tile[40] = new Tile();
             tile[40].image = ImageIO.read(getClass().getResourceAsStream("/tiles/schody_barrier_0.png"));
+            tile[40].colission = true;
 
             tile[41] = new Tile();
             tile[41].image = ImageIO.read(getClass().getResourceAsStream("/tiles/schody_barrier_1.png"));
+            tile[41].colission = true;
 
             tile[42] = new Tile();
             tile[42].image = ImageIO.read(getClass().getResourceAsStream("/tiles/schody_barrier_2.png"));
+            tile[42].colission = true;
 
             //ARENA
             tile[50] = new Tile();
@@ -226,13 +247,40 @@ public class TileManager {
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
+            // Zatrzymanie kamery
+            if(gp.player.screenX > gp.player.worldX){
+                screenX = worldX;
+            }
+            if(gp.player.screenY > gp.player.worldY){
+                screenY = worldY;
+            }
+
+            int rightStop = gp.screenWidth - gp.player.screenX;
+            if(rightStop > gp.worldWidth - gp.player.worldX){
+                screenX = gp.screenWidth - (gp.worldWidth - worldX);
+            }
+
+            int bottomStop = gp.screenHeight - gp.player.screenY;
+            if(bottomStop > gp.worldHeight - gp.player.worldY){
+                screenY = gp.screenHeight - (gp.worldHeight - worldY);
+            }
+
             if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
                 worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
                 worldY - gp.tileSize < gp.player.worldY + gp.player.screenY){
 
                 g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+            }else if(gp.player.screenX > gp.player.worldX ||
+                     gp.player.screenY > gp.player.worldY ||
+                     rightStop > gp.worldWidth - gp.player.worldX ||
+                     bottomStop > gp.worldHeight - gp.player.worldY){
+                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
             }
+
+
 
             worldCol++;
 
