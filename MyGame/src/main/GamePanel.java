@@ -14,8 +14,8 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTitleSize = 16; // 16 x 16 tile
     final int scale = 3;
     public final int tileSize = originalTitleSize * scale; // 48 x 48 tile
-    public final int maxScreenCol = 16;
-    public final int maxScreenRow = 12;
+    public final int maxScreenCol = 40;
+    public final int maxScreenRow = 22;
     public final int screenWidth = tileSize * maxScreenCol; //768
     public final int screenHeight = tileSize * maxScreenRow; //576
 
@@ -39,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable{
     
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.white);
+        this.setBackground(Color.black);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
@@ -47,7 +47,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void setupGame(){
         ac.setObject();
-        //playMusic(0);
+        playMusic(0);
     }
 
     public void startGameThread(){
@@ -99,6 +99,9 @@ public class GamePanel extends JPanel implements Runnable{
          super.paintComponent(g);
 
          Graphics2D g2 = (Graphics2D)g;
+        // Włączenie antyaliasingu
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
         tileM.draw(g2);
 
@@ -116,11 +119,11 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void playMusic(int i){
         sound.setFile(i);
-        sound.play();
+//        sound.play();
         sound.loop();
     }
     public void stopMusic(){
-        sound.stop();
+//        sound.stop();
     }
 
     public void playSoundEffect(int i){

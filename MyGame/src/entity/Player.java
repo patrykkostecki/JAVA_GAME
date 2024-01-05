@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class Player extends Entity{
 
+
     private int originalWidth;
     private int originalHeight;
     private int scaledWidth;
@@ -24,6 +25,9 @@ public class Player extends Entity{
     public int hasKey = 0;
 
     public Player(GamePanel gp, KeyHandler keyH){
+
+
+
         this.gp = gp;
         this.keyH = keyH;
 
@@ -45,7 +49,7 @@ public class Player extends Entity{
     public void setDefaultValues(){
          worldX = 1650;
          worldY = -10;
-         speed = 4;
+         speed = 20;
          direction = "down";
     }
 
@@ -233,6 +237,7 @@ public class Player extends Entity{
                     image = standing4;
                 }
                 break;
+
         }
 
         g2.drawImage(image, screenX, screenY, gp.tileSize * 2, gp.tileSize * 2, null);

@@ -21,6 +21,7 @@ public class Game extends JFrame {
     }
 
     public static void main(String[] args) {
+
         new Game();
         System.out.println("Gra uruchomiona");
     }
