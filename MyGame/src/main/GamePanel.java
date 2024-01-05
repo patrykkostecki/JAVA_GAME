@@ -1,5 +1,6 @@
 package main;
 
+import entity.Entity;
 import entity.Player;
 import object.SuperObject;
 import tile.Tile;
@@ -25,16 +26,25 @@ public class GamePanel extends JPanel implements Runnable{
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
-
-    KeyHandler keyH = new KeyHandler();
+    // SYSTEM
+    KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
     public ColissionChecker ck = new ColissionChecker(this);
     public Sound sound = new Sound();
     public UI ui = new UI(this);
-    public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[10];
     public AssetSetter ac = new AssetSetter(this);
     TileManager tileM = new TileManager(this);
+
+    // PLAYER AND OBJECTS
+    public Player player = new Player(this, keyH);
+    public SuperObject obj[] = new SuperObject[10];
+    public Entity npc[] = new Entity[10];
+
+    // GAME STATE
+    public int gameState;
+    public final int playState = 1;
+    public final int stopState = 2;
+    public final int dialogueState = 3;
 
 
     
@@ -48,7 +58,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void setupGame(){
         ac.setObject();
+        ac.setNPC();
 //        playMusic(0);
+        gameState = playState;
     }
 
     public void startGameThread(){
@@ -92,7 +104,23 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update(){
 
-        player.update();
+        if(gameState == playState){
+            // PLAYER
+            player.update();
+
+            // NPC
+            for (int i=0; i<npc.length;i++){
+                if(npc[i] != null){
+                        npc[i].update();
+                }
+            }
+
+        }
+        if(gameState == stopState){
+
+        }
+
+
 
     }
 
@@ -104,15 +132,27 @@ public class GamePanel extends JPanel implements Runnable{
 //        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 //        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
+        // TILE
         tileM.draw(g2);
 
+        // OBJECTS
         for(int i=0; i<obj.length; i++){
             if(obj[i] != null){
                 obj[i].draw(g2, this);
             }
         }
+
+        // PLAYER
         player.draw(g2);
 
+        // NPC
+        for (int i=0; i < npc.length; i++){
+            if (npc[i] != null){
+                npc[i].draw(g2);
+            }
+        }
+
+        // INTERFACE
         ui.draw(g2);
 
         g2.dispose();

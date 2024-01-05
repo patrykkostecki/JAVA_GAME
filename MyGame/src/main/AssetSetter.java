@@ -1,5 +1,6 @@
 package main;
 
+import entity.NPC_Dendzik;
 import object.*;
 
 public class AssetSetter {
@@ -39,6 +40,14 @@ public class AssetSetter {
         gp.obj[6] = new CoffeAutomat();
         gp.obj[6].worldX = 20 * gp.tileSize;
         gp.obj[6].worldY = 47 * gp.tileSize;
+
+    }
+
+    public void setNPC(){
+
+        gp.npc[0] = new NPC_Dendzik(gp);
+        gp.npc[0].worldX = 28 * gp.tileSize;
+        gp.npc[0].worldY = 17 * gp.tileSize;
 
     }
 
