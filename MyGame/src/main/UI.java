@@ -1,12 +1,16 @@
 package main;
 
+import entity.NPC_Dendzik;
 import object.Key;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class UI {
 
+    NPC_Dendzik npc;
     GamePanel gp;
     Graphics2D g2;
     Font arial_40, arial_80;
@@ -16,6 +20,8 @@ public class UI {
     int messageCounter = 0;
     public boolean gameFinished = false;
     public String correntDialogue = "";
+    public int commandNum = 0;
+    public int titleScreenState = 0;
 
 
     public UI(GamePanel gp){
@@ -39,6 +45,13 @@ public class UI {
 
         g2.setFont(arial_40);
         g2.setColor(Color.white);
+
+        // MENU STATE
+        if (gp.gameState == gp.menuState){
+
+            drawMenuScreen();
+
+        }
 
         // PLAY STATE
         if (gp.gameState == gp.playState){
@@ -92,7 +105,6 @@ public class UI {
                     }
                 }
             }
-
         }
 
         // PAUSE STAtE
@@ -104,10 +116,107 @@ public class UI {
         if (gp.gameState == gp.dialogueState){
             drawDialogueScreen();
         }
+    }
 
+    public void drawMenuScreen(){
 
+        if (titleScreenState == 0){
+            // BACKGROUND
+            g2.setColor(Color.darkGray);
+            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
+            // TEXT
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
+            String text = "SMCEBI GAME";
+            int x = centerX(text);
+            int y = gp.tileSize * 3;
+            // SHADOW
+            g2.setColor(Color.black);
+            g2.drawString(text, x + 5, y + 5);
+            // COLOR
+            g2.setColor(Color.white);
+            g2.drawString(text, x, y);
 
+            // IMAGE
+//        x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
+//        y += gp.tileSize * 2;
+//        g2.drawImage(npc.standing1, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
+
+            // MENU
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            text = "NOWA GRA";
+            x = centerX(text);
+            y += gp.tileSize * 6;
+            g2.drawString(text, x, y);
+            if (commandNum == 0){
+                g2.drawString(">",x-gp.tileSize,y);
+            }
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            text = "WCZYTAJ GRĘ";
+            x = centerX(text);
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+            if (commandNum == 1){
+                g2.drawString(">",x-gp.tileSize,y);
+            }
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            text = "WYJDZ Z GRY";
+            x = centerX(text);
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+            if (commandNum == 2){
+                g2.drawString(">",x-gp.tileSize,y);
+            }
+        } else if (titleScreenState == 1){
+
+            // WYBOR POSTACI
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+
+            String text = "WYBIERZ CHOPKA";
+            int x = centerX(text);
+            int y = gp.tileSize * 3;
+            g2.drawString(text,x,y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            text = "LEOKADIA";
+            x = centerX(text);
+            y += gp.tileSize * 3;
+            g2.drawString(text,x,y);
+            if (commandNum  == 0){
+                g2.drawString(">",x - gp.tileSize,y);
+            }
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            text = "PATRYK";
+            x = centerX(text);
+            y += gp.tileSize;
+            g2.drawString(text,x,y);
+            if (commandNum  == 1){
+                g2.drawString(">",x - gp.tileSize,y);
+            }
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            text = "SZYMON";
+            x = centerX(text);
+            y += gp.tileSize;
+            g2.drawString(text,x,y);
+            if (commandNum  == 2){
+                g2.drawString(">",x - gp.tileSize,y);
+            }
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            text = "WROC";
+            x = centerX(text);
+            y += gp.tileSize * 3;
+            g2.drawString(text,x,y);
+            if (commandNum  == 3){
+                g2.drawString(">",x - gp.tileSize,y);
+            }
+
+        }
     }
 
     public void drawPauseScreen(){
@@ -132,7 +241,12 @@ public class UI {
 
         x += gp.tileSize;
         y += gp.tileSize;
-        g2.drawString(correntDialogue,x,y);
+
+        for (String line : correntDialogue.split("\n")){
+            g2.drawString(line,x,y);
+            y += 40;
+        }
+
 
     }
 

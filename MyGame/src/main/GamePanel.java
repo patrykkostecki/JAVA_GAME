@@ -27,7 +27,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int worldHeight = tileSize * maxWorldRow;
 
     // SYSTEM
-    KeyHandler keyH = new KeyHandler(this);
+    public KeyHandler keyH = new KeyHandler(this);
     Thread gameThread;
     public ColissionChecker ck = new ColissionChecker(this);
     public Sound sound = new Sound();
@@ -45,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int playState = 1;
     public final int stopState = 2;
     public final int dialogueState = 3;
+    public final int menuState = 4;
 
 
     
@@ -59,8 +60,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void setupGame(){
         ac.setObject();
         ac.setNPC();
-//        playMusic(0);
-        gameState = playState;
+        gameState = menuState;
     }
 
     public void startGameThread(){
@@ -131,31 +131,37 @@ public class GamePanel extends JPanel implements Runnable{
 //         //Włączenie antyaliasingu
 //        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 
+        // MENU
+        if (gameState == menuState){
 
+            ui.draw(g2);
 
+        } else{
+            // TILE
+            tileM.draw(g2);
 
-        // TILE
-        tileM.draw(g2);
-
-        // OBJECTS
-        for(int i=0; i<obj.length; i++){
-            if(obj[i] != null){
-                obj[i].draw(g2, this);
+            // OBJECTS
+            for(int i=0; i<obj.length; i++){
+                if(obj[i] != null){
+                    obj[i].draw(g2, this);
+                }
             }
+
+            // PLAYER
+            player.draw(g2);
+
+            // NPC
+            for (int i=0; i < npc.length; i++){
+                if (npc[i] != null){
+                    npc[i].draw(g2);
+                }
+            }
+
+            // INTERFACE
+            ui.draw(g2);
         }
 
-        // PLAYER
-        player.draw(g2);
 
-        // NPC
-        for (int i=0; i < npc.length; i++){
-            if (npc[i] != null){
-                npc[i].draw(g2);
-            }
-        }
-
-        // INTERFACE
-        ui.draw(g2);
 
         g2.dispose();
     }

@@ -15,9 +15,6 @@ public class Game extends JFrame {
         this.setTitle("GOTY 2025");
         panel.setupGame();
         panel.startGameThread();
-
-
-
     }
 
     public static void main(String[] args) {

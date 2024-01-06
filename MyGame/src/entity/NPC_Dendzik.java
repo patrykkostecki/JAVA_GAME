@@ -16,6 +16,7 @@ public class NPC_Dendzik extends Entity{
         speed = 1;
 
         getNPCImage();
+        speak();
         setDialogue();
 
     }
@@ -60,13 +61,20 @@ public class NPC_Dendzik extends Entity{
 
     public void setDialogue(){
 
-        dialogues[0] = "Daj 5 Dendzior pls";
+        dialogues[0] = "Siema byku, jo je dendzior \nczyli postrach tej szkoly";
+        dialogues[1] = "Dobra chuj mnie to obchodzi leszczu";
+        dialogues[2] = "Nie dostaniesz 5, bo jestes gownem";
+        dialogues[3] = "Dobra nie ma 5 elo spierdalaj";
 
     }
 
     public void speak(){
 
-        gp.ui.correntDialogue = dialogues[0];
+        if (dialogues[dialogueIndex] == null){
+            dialogueIndex = 0;
+        }
+        gp.ui.correntDialogue = dialogues[dialogueIndex];
+        dialogueIndex ++;
 
     }
 
