@@ -70,14 +70,22 @@ public class KeyHandler implements KeyListener {
                     if (code == KeyEvent.VK_ENTER) {
                         if (gp.ui.commandNum == 0) {
                             gp.gameState = gp.playState;
+                            gp.player.skin = 1;
+                            gp.player.getPlayerImage();
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 1) {
                             gp.gameState = gp.playState;
+                            gp.player.skin = 2;
+                            gp.player.getPlayerImage();
+
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 2) {
                             gp.gameState = gp.playState;
+                            gp.player.skin = 3;
+                            gp.player.getPlayerImage();
+
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 3) {
