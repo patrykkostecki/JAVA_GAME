@@ -111,19 +111,19 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_SPACE) {
                     spacePressed = true;
                 }
-                if (code == KeyEvent.VK_P) {
-                    if (gp.gameState == gp.playState) {
-                        gp.gameState = gp.stopState;
-                    } else if (gp.gameState == gp.stopState) {
-                        gp.gameState = gp.playState;
-                    }
-                }
-                if (code == KeyEvent.VK_ESCAPE) {
-                    if (gp.gameState == gp.dialogueState) {
-                        gp.gameState = gp.playState;
-                    }
-                }
             }
+        if (code == KeyEvent.VK_P) {
+            if (gp.gameState == gp.playState) {
+                gp.gameState = gp.stopState;
+            } else if (gp.gameState == gp.stopState) {
+                gp.gameState = gp.playState;
+            }
+        }
+        if (code == KeyEvent.VK_ESCAPE) {
+            if (gp.gameState == gp.dialogueState) {
+                gp.gameState = gp.playState;
+            }
+        }
     }
 
 
