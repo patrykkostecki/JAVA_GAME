@@ -48,6 +48,7 @@ public class KeyHandler implements KeyListener {
                         }
                     }
                 }
+            }
             } else if (gp.ui.titleScreenState == 1) {
 
                 if (gp.gameState == gp.menuState) {
@@ -85,7 +86,7 @@ public class KeyHandler implements KeyListener {
                         gp.repaint();
                     }
                 }
-            } else if (gp.gameState == gp.playState) {
+            } if (gp.gameState == gp.playState) {
 
                 if (code == KeyEvent.VK_W) {
                     upPressed = true;
@@ -115,7 +116,6 @@ public class KeyHandler implements KeyListener {
                     }
                 }
             }
-        }
     }
 
 
