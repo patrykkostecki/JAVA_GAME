@@ -1,6 +1,6 @@
 package main;
 
-import entity.NPC_Dendzik;
+import entity.*;
 import object.*;
 
 public class AssetSetter {
@@ -48,6 +48,22 @@ public class AssetSetter {
         gp.npc[0] = new NPC_Dendzik(gp);
         gp.npc[0].worldX = 28 * gp.tileSize;
         gp.npc[0].worldY = 17 * gp.tileSize;
+
+        gp.npc[1] = new NPC_Ochrona_Man(gp);
+        gp.npc[1].worldX = 47 * gp.tileSize;
+        gp.npc[1].worldY = 30 * gp.tileSize;
+
+        gp.npc[2] = new NPC_Ochrona_Woman(gp);
+        gp.npc[2].worldX = 47 * gp.tileSize;
+        gp.npc[2].worldY = 32 * gp.tileSize;
+
+        gp.npc[3] = new NPC_Grzybo(gp);
+        gp.npc[3].worldX = 33 * gp.tileSize;
+        gp.npc[3].worldY = 47 * gp.tileSize;
+
+        gp.npc[4] = new NPC_Krzysio(gp);
+        gp.npc[4].worldX = 21 * gp.tileSize;
+        gp.npc[4].worldY = 9 * gp.tileSize;
 
     }
 

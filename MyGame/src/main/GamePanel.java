@@ -15,8 +15,8 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTitleSize = 16; // 16 x 16 tile
     final int scale = 3;
     public final int tileSize = originalTitleSize * scale; // 48 x 48 tile
-    public final int maxScreenCol = 16;
-    public final int maxScreenRow = 12;
+    public final int maxScreenCol = 20;
+    public final int maxScreenRow = 15;
     public final int screenWidth = tileSize * maxScreenCol; //768
     public final int screenHeight = tileSize * maxScreenRow; //576
 
@@ -129,8 +129,10 @@ public class GamePanel extends JPanel implements Runnable{
 
          Graphics2D g2 = (Graphics2D)g;
         // Włączenie antyaliasingu
-//        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+//        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+
+
+
 
         // TILE
         tileM.draw(g2);
