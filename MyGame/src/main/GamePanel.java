@@ -128,7 +128,7 @@ public class GamePanel extends JPanel implements Runnable{
          super.paintComponent(g);
 
          Graphics2D g2 = (Graphics2D)g;
-        // Włączenie antyaliasingu
+//         //Włączenie antyaliasingu
 //        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 
 
