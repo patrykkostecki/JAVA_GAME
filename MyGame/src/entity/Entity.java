@@ -19,12 +19,18 @@ public class Entity {
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean colissionOn = false;
     public int actionLockCounter = 0;
+    public String dialogues[] = new String[20];
+
 
     public Entity(GamePanel gp) {
         this.gp = gp;
     }
 
     public void setAction(){
+
+    }
+
+    public void speak(){
 
     }
 

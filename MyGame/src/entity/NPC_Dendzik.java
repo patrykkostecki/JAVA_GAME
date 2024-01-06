@@ -16,6 +16,7 @@ public class NPC_Dendzik extends Entity{
         speed = 1;
 
         getNPCImage();
+        setDialogue();
 
     }
 
@@ -54,8 +55,19 @@ public class NPC_Dendzik extends Entity{
                 direction = "standing";
             }
         }
-
         actionLockCounter = 0;
+    }
+
+    public void setDialogue(){
+
+        dialogues[0] = "Daj 5 Dendzior pls";
 
     }
+
+    public void speak(){
+
+        gp.ui.correntDialogue = dialogues[0];
+
+    }
+
 }

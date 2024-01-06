@@ -15,6 +15,8 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
+    public String correntDialogue = "";
+
 
     public UI(GamePanel gp){
         this.gp = gp;
@@ -127,6 +129,10 @@ public class UI {
         int height = gp.tileSize * 5;
 
         drawSubWindow(x,y,width,height);
+
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.drawString(correntDialogue,x,y);
 
     }
 
