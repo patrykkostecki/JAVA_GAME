@@ -46,7 +46,7 @@ public class Player extends Entity{
 
     public void setDefaultValues(){
          worldX = 1650;
-         worldY = -10;
+         worldY = 450;
          speed = 20;
          direction = "down";
          maxLife = 6;
