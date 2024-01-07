@@ -38,10 +38,9 @@ public class NPC_Krzysio extends Entity{
 
         actionLockCounter ++;
 
-        if (actionLockCounter == 120){
+        if (actionLockCounter == 90){
             Random random = new Random();
-            //int i = random.nextInt(100) + 1;
-            int i = 101;
+            int i = random.nextInt(100) + 1;
 
             if (i <= 25){
                 direction = "up";
@@ -51,11 +50,11 @@ public class NPC_Krzysio extends Entity{
                 direction = "left";
             } else if (i > 75 && i <= 100){
                 direction = "right";
-            } else if (i == 101){
-                direction = "standing";
+//            } else if (i == 101){
+//                direction = "standing";
             }
+            actionLockCounter = 0;
         }
-        actionLockCounter = 0;
     }
 
     public void setDialogue(){
