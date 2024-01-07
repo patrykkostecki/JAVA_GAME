@@ -25,6 +25,7 @@ public class Entity {
     // STATUS BOHATERA
     public int maxLife;
     public int life;
+    public String name;
 
 
     public Entity(GamePanel gp) {
