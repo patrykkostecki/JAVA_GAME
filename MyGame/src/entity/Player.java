@@ -49,6 +49,8 @@ public class Player extends Entity{
          worldY = -10;
          speed = 20;
          direction = "down";
+         maxLife = 6;
+         life = 6;
     }
 
     public void getPlayerImage(){
@@ -122,6 +124,10 @@ public class Player extends Entity{
         int npcIndex = gp.ck.checkEntity(this,gp.npc);
         interactNPC(npcIndex);
 
+        // SPRAWDZANIE EVENTU
+        gp.eHandler.checkEvent();
+        gp.keyH.spacePressed = false;
+
         // SPRAWDZANIE KOLIZJI GRACZA
         if(colissionOn == false){
             switch(direction){
@@ -161,7 +167,7 @@ public class Player extends Entity{
 
         }
 
-        gp.keyH.spacePressed = false;
+
 
     }
 

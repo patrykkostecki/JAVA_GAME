@@ -33,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Sound sound = new Sound();
     public UI ui = new UI(this);
     public AssetSetter ac = new AssetSetter(this);
+    public EventHandler eHandler = new EventHandler(this);
     TileManager tileM = new TileManager(this);
 
     // PLAYER AND OBJECTS
@@ -146,6 +147,9 @@ public class GamePanel extends JPanel implements Runnable{
                     obj[i].draw(g2, this);
                 }
             }
+
+            // EVENTS
+
 
             // PLAYER
             player.draw(g2);
