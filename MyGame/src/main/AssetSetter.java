@@ -65,6 +65,17 @@ public class AssetSetter {
         gp.npc[4].worldX = 21 * gp.tileSize;
         gp.npc[4].worldY = 9 * gp.tileSize;
 
+        gp.npc[5] = new NPC_Wozna(gp);
+        gp.npc[5].worldX = 29 * gp.tileSize;
+        gp.npc[5].worldY = 9 * gp.tileSize;
+
+        gp.npc[6] = new NPC_Kasia(gp);
+        gp.npc[6].worldX = 43 * gp.tileSize;
+        gp.npc[6].worldY = 17 * gp.tileSize;
+
+        gp.npc[7] = new NPC_Bubi(gp);
+        gp.npc[7].worldX = 14 * gp.tileSize;
+        gp.npc[7].worldY = 17 * gp.tileSize;
     }
 
 }
