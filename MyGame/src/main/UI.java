@@ -1,7 +1,9 @@
 package main;
 
 import entity.NPC_Dendzik;
+import object.Heart;
 import object.Key;
+import object.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -15,6 +17,7 @@ public class UI {
     Graphics2D g2;
     Font arial_40, arial_80;
     BufferedImage keyImage;
+    BufferedImage heart_full, heart_half, heart_blank;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -24,6 +27,7 @@ public class UI {
     public int titleScreenState = 0;
 
 
+
     public UI(GamePanel gp){
         this.gp = gp;
 
@@ -31,6 +35,13 @@ public class UI {
         arial_40 = new Font("Arial", Font.PLAIN, 40);
         Key key = new Key();
         keyImage = key.image;
+
+        // HUD
+        SuperObject heart = new Heart(gp);
+        heart_full = heart.image;
+        heart_half = heart.image2;
+        heart_blank = heart.image3;
+
     }
 
     public void showMessage(String text){
@@ -55,6 +66,8 @@ public class UI {
 
         // PLAY STATE
         if (gp.gameState == gp.playState){
+
+            drawPlayerLife();
 
             if (gameFinished == true){
 
@@ -87,8 +100,8 @@ public class UI {
 
                 g2.setFont(arial_40);
                 g2.setColor(Color.darkGray);
-                g2.drawImage(keyImage, gp.tileSize/2, gp.tileSize/2, gp.tileSize, gp.tileSize, null);
-                g2.drawString("  : " + gp.player.hasKey, 60 ,60);
+                g2.drawImage(keyImage, gp.tileSize/2, gp.tileSize/2 + 600, gp.tileSize, gp.tileSize, null);
+                g2.drawString("  : " + gp.player.hasKey, 60 ,660);
                 g2.drawString("Speed: "+ gp.player.speed, 550, 60);
 
                 // TEXT MSG
@@ -110,12 +123,49 @@ public class UI {
         // PAUSE STAtE
         if (gp.gameState == gp.stopState){
             drawPauseScreen();
+            drawPlayerLife();
         }
 
         // DIALOGUE STATE
         if (gp.gameState == gp.dialogueState){
             drawDialogueScreen();
+            drawPlayerLife();
         }
+    }
+
+    public void drawPlayerLife(){
+
+        int x = gp.tileSize / 2;
+        int y = gp.tileSize / 2;
+        int i = 0;
+
+        // MAX HP
+        while (i < gp.player.maxLife/2){
+            g2.drawImage(heart_blank, x, y, null);
+            i++;
+            x += gp.tileSize;
+        }
+
+        // RESET
+        x = gp.tileSize / 2;
+        y = gp.tileSize / 2;
+        i = 0;
+
+        // AKTUALNE HP
+        while (i < gp.player.life){
+
+            g2.drawImage(heart_half, x, y, null);
+            i++;
+            if (i < gp.player.life){
+                g2.drawImage(heart_full,x,y,null);
+            }
+            i++;
+            x+=gp.tileSize;
+
+        }
+
+
+
     }
 
     public void drawMenuScreen(){
