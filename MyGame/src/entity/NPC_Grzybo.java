@@ -26,6 +26,26 @@ public class NPC_Grzybo extends Entity{
 
         try{
 
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/tyl0.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/tyl1.png"));
+            up3 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/tyl2.png"));
+            up4 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/tyl3.png"));
+
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/przod0.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/przod1.png"));
+            down3 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/przod2.png"));
+            down4 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/przod3.png"));
+
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/lewo0.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/lewo1.png"));
+            left3 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/lewo2.png"));
+            left4 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/lewo3.png"));
+
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/prawo0.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/prawo1.png"));
+            right3 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/prawo2.png"));
+            right4 = ImageIO.read(getClass().getResourceAsStream("/player/Grzybo/prawo3.png"));
+
             standing1 = ImageIO.read((getClass().getResourceAsStream("/player/Grzybo/stanie0.png")));
             standing2 = ImageIO.read((getClass().getResourceAsStream("/player/Grzybo/stanie1.png")));
             standing3 = ImageIO.read((getClass().getResourceAsStream("/player/Grzybo/stanie2.png")));
