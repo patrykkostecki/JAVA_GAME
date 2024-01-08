@@ -216,12 +216,12 @@ public class Player extends Entity{
         }
     }
 
-    public void contactMonster(int i){
-
-        if (i != 999){
-            if (invincible == false){
+    public void contactMonster(int i) {
+        if (i != 999) {
+            if (!invincible) {
                 life -= 1;
                 invincible = true;
+                invincibleCounter = 0; // Zresetuj licznik nieśmiertelności
             }
         }
     }
@@ -282,6 +282,15 @@ public class Player extends Entity{
             spriteCounter = 0;
             attacking = false;
         }
+
+        if (invincible == true){
+            invincibleCounter ++;
+            if (invincibleCounter > 60){
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
+
     }
     public void pickUpObject(int i){
 
@@ -370,10 +379,12 @@ public class Player extends Entity{
                     } else if (spriteNumber == 2) { image = attackp; }} break;
 
             case "standing":
-                if (spriteNumber == 1) { image = standing1;
-                } else if (spriteNumber == 2) { image = standing2;
-                } else if (spriteNumber == 3) { image = standing3;
-                } else if (spriteNumber == 4) { image = standing4; } break;
+                if (attacking == false){
+                    if (spriteNumber == 1) { image = standing1;
+                    } else if (spriteNumber == 2) { image = standing2;
+                    } else if (spriteNumber == 3) { image = standing3;
+                    } else if (spriteNumber == 4) { image = standing4; } break;
+                }
 
         }
 
@@ -398,7 +409,14 @@ public class Player extends Entity{
             y = gp.screenHeight - (gp.worldHeight - worldY);
         }
 
+        if (invincible == true){
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
+        }
+
         g2.drawImage(image, tempScreenX, tempScreenY, gp.tileSize * 2, gp.tileSize * 2, null);
+
+
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
     }
 }
