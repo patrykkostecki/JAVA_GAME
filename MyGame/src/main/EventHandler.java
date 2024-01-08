@@ -61,7 +61,7 @@ public class EventHandler {
     }
     public void damagePit(int gameState){
         gp.gameState = gameState;
-        gp.ui.correntDialogue = "o kurwa ale boli";
+        gp.ui.correntDialogue = "Ała!";
         gp.player.life -= 1;
     }
 
@@ -69,7 +69,7 @@ public class EventHandler {
 
         //if (gp.keyH.spacePressed == true){
             gp.gameState = gameState;
-            gp.ui.correntDialogue = "piwko leczy";
+            gp.ui.correntDialogue = "Uleczono!";
             gp.player.life ++;
        // }
 

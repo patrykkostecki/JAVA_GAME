@@ -15,13 +15,13 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTitleSize = 16; // 16 x 16 tile
     final int scale = 3;
     public final int tileSize = originalTitleSize * scale; // 48 x 48 tile
-    public final int maxScreenCol = 20;
-    public final int maxScreenRow = 15;
+    public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12;
     public final int screenWidth = tileSize * maxScreenCol; //768
     public final int screenHeight = tileSize * maxScreenRow; //576
 
     //USTAWIENIA MAPY
-    public final int maxWorldCol = 73;
+    public final int maxWorldCol = 71;
     public final int maxWorldRow = 97;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
@@ -175,10 +175,9 @@ public class GamePanel extends JPanel implements Runnable{
 
             // INTERFACE
             ui.draw(g2);
+
+
         }
-
-
-
         g2.dispose();
     }
 

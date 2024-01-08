@@ -203,6 +203,13 @@ public class Player extends Entity{
                 spriteCounter = 0;
             }
         }
+        if (invincible == true){
+            invincibleCounter ++;
+            if (invincibleCounter > 60){
+                invincible = false;
+                invincibleCounter = 0;
+            }
+        }
     }
 
     public void interactNPC(int i){
@@ -288,14 +295,6 @@ public class Player extends Entity{
             attacking = false;
         }
 
-        if (invincible == true){
-            invincibleCounter ++;
-            if (invincibleCounter > 60){
-                invincible = false;
-                invincibleCounter = 0;
-            }
-        }
-
     }
     public void pickUpObject(int i){
 
@@ -320,7 +319,7 @@ public class Player extends Entity{
                     }
                     break;
                 case "Desk":
-                    gp.ui.showMessage("Porwano DENDZIORA!");
+                    gp.ui.showMessage("Odwołano zajęcia!");
                     break;
                 case "EatAutomat":
                     gp.player.speed = 6;
@@ -390,6 +389,9 @@ public class Player extends Entity{
                     } else if (spriteNumber == 3) { image = standing3;
                     } else if (spriteNumber == 4) { image = standing4; } break;
                 }
+                if (attacking == true){
+                    if (spriteNumber == 1) { image = attackp;
+                    } else if (spriteNumber == 2) { image = attackp; }} break;
 
         }
 
@@ -418,7 +420,7 @@ public class Player extends Entity{
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));
         }
 
-        g2.drawImage(image, tempScreenX, tempScreenY, gp.tileSize * 2, gp.tileSize * 2, null);
+        g2.drawImage(image,  x, y, gp.tileSize * 2, gp.tileSize * 2, null);
 
 
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
