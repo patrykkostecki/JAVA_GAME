@@ -21,7 +21,7 @@ public class ZombieMan extends Entity {
 
         solidArea.x = 10;
         solidArea.y = 1;
-        solidArea.width = 48;
+        solidArea.width = 32;
         solidArea.height = 48;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -78,6 +78,12 @@ public class ZombieMan extends Entity {
             }
             actionLockCounter = 0;
         }
+
+    }
+    public void damageReaction(){
+
+        actionLockCounter = 0;
+        direction = gp.player.direction;
 
     }
 
