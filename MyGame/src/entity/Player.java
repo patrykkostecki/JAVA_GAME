@@ -51,7 +51,7 @@ public class Player extends Entity{
     public void setDefaultValues(){
          worldX = 1650;
          worldY = 450;
-         speed = 20;
+         speed = 4;
          direction = "down";
          maxLife = 6;
          life = 6;
@@ -246,8 +246,8 @@ public class Player extends Entity{
                 gp.monster[i].life -= 1;
                 gp.monster[i].invincible = true;
 
-                if (gp.monster[i].life < 1){
-                    gp.monster[i] = null;
+                if (gp.monster[i].life <= 0){
+                    gp.monster[i].dying = true;
                 }
 
             }

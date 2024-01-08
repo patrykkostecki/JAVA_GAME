@@ -15,6 +15,8 @@ public class NPC_Bubi extends Entity{
         direction = "standing";
         speed = 1;
 
+
+
         getNPCImage();
         setDialogue();
 
