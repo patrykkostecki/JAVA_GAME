@@ -51,7 +51,7 @@ public class Player extends Entity{
     public void setDefaultValues(){
          worldX = 1650;
          worldY = 450;
-         speed = 4;
+         speed = 20;
          direction = "down";
          maxLife = 6;
          life = 6;
@@ -185,7 +185,12 @@ public class Player extends Entity{
                         break;
                 }
             }
+
         }
+     else {
+        // Jeśli żaden klawisz nie jest wciśnięty, ustaw kierunek na "standing"
+        direction = "standing";
+    }
 
         // Aktualizacja animacji postaci
         if (!attacking) {

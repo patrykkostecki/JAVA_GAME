@@ -79,6 +79,10 @@ public class AssetSetter {
         gp.npc[7] = new NPC_Bubi(gp);
         gp.npc[7].worldX = 14 * gp.tileSize;
         gp.npc[7].worldY = 17 * gp.tileSize;
+
+        gp.npc[8] = new NPC_Rafal(gp);
+        gp.npc[8].worldX = 15 * gp.tileSize;
+        gp.npc[8].worldY = 53 * gp.tileSize;
     }
 
     public void setMonster(){

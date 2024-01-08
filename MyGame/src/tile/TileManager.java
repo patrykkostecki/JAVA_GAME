@@ -208,6 +208,30 @@ public class TileManager {
             tile[80] = new Tile();
             tile[80].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Czern.png"));
 
+            tile[82] = new Tile();
+            tile[82].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dziekan0.png"));
+
+            tile[83] = new Tile();
+            tile[83].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dziekan1.png"));
+
+            tile[84] = new Tile();
+            tile[84].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dziekan2.png"));
+
+            //Barykady
+
+            tile[85] = new Tile();
+            tile[85].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barykada0.png"));
+            tile[85].colission = true;
+
+            tile[86] = new Tile();
+            tile[86].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barykada1.png"));
+
+            tile[87] = new Tile();
+            tile[87].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barykada2.png"));
+
+            tile[88] = new Tile();
+            tile[88].image = ImageIO.read(getClass().getResourceAsStream("/tiles/kolce.png"));
+
 
             tile[90] = new Tile();
             tile[90].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tablica.png"));
