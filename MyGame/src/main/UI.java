@@ -100,8 +100,8 @@ public class UI {
 
                 g2.setFont(arial_40);
                 g2.setColor(Color.darkGray);
-                g2.drawImage(keyImage, gp.tileSize/2, gp.tileSize/2 + 600, gp.tileSize, gp.tileSize, null);
-                g2.drawString("  : " + gp.player.hasKey, 60 ,660);
+                g2.drawImage(keyImage, gp.tileSize/2, gp.tileSize/2 + 470, gp.tileSize, gp.tileSize, null);
+                g2.drawString("  : " + gp.player.hasKey, 60 ,530);
                 g2.drawString("Speed: "+ gp.player.speed, 550, 60);
 
                 // TEXT MSG

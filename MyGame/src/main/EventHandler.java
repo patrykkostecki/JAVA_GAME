@@ -69,7 +69,7 @@ public class EventHandler {
 
         //if (gp.keyH.spacePressed == true){
             gp.gameState = gameState;
-            gp.ui.correntDialogue = "Uleczono!";
+            gp.ui.correntDialogue = "Uleczono";
             gp.player.life ++;
        // }
 
