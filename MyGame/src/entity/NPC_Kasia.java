@@ -78,7 +78,7 @@ public class NPC_Kasia extends Entity{
 
     public void setDialogue(){
 
-        dialogues[0] = "Daj 5 Dendzior pls";
+        dialogues[0] = "";
 
     }
 

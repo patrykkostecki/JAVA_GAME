@@ -81,10 +81,10 @@ public class NPC_Dendzik extends Entity{
 
     public void setDialogue(){
 
-        dialogues[0] = "Siema byku, jo je dendzior \nczyli postrach tej szkoly";
-        dialogues[1] = "Dobra chuj mnie to obchodzi leszczu";
-        dialogues[2] = "Nie dostaniesz 5, bo jestes gownem";
-        dialogues[3] = "Dobra nie ma 5 elo spierdalaj";
+        dialogues[0] = "";
+        dialogues[1] = "";
+        dialogues[2] = "";
+        dialogues[3] = "";
 
     }
 

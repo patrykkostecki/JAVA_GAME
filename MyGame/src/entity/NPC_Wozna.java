@@ -59,7 +59,7 @@ public class NPC_Wozna extends Entity{
 
     public void setDialogue(){
 
-        dialogues[0] = "Daj 5 Dendzior pls";
+        dialogues[0] = "Och chłopcze";
 
     }
 
