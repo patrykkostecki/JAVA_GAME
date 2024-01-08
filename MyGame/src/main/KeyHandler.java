@@ -72,12 +72,14 @@ public class KeyHandler implements KeyListener {
                             gp.gameState = gp.playState;
                             gp.player.skin = 1;
                             gp.player.getPlayerImage();
+                            gp.player.getPlayerAttackImage();
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 1) {
                             gp.gameState = gp.playState;
                             gp.player.skin = 2;
                             gp.player.getPlayerImage();
+                            gp.player.getPlayerAttackImage();
 
                         }
                         gp.repaint();
@@ -85,6 +87,7 @@ public class KeyHandler implements KeyListener {
                             gp.gameState = gp.playState;
                             gp.player.skin = 3;
                             gp.player.getPlayerImage();
+                            gp.player.getPlayerAttackImage();
 
                         }
                         gp.repaint();

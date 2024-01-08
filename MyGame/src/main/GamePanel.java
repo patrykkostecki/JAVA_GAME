@@ -36,10 +36,11 @@ public class GamePanel extends JPanel implements Runnable{
     public EventHandler eHandler = new EventHandler(this);
     TileManager tileM = new TileManager(this);
 
-    // PLAYER AND OBJECTS
+    // PLAYER AND OBJECTS NAD MONSTERS
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
     public Entity npc[] = new Entity[10];
+    public Entity monster[] = new Entity[30];
 
     // GAME STATE
     public int gameState;
@@ -61,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void setupGame(){
         ac.setObject();
         ac.setNPC();
+        ac.setMonster();
         gameState = menuState;
     }
 
@@ -111,8 +113,13 @@ public class GamePanel extends JPanel implements Runnable{
 
             // NPC
             for (int i=0; i<npc.length;i++){
-                if(npc[i] != null){
-                        npc[i].update();
+                if (npc[i] != null){
+                    npc[i].update();
+                }
+            }
+            for (int i=0; i<monster.length; i++){
+                if (monster[i] != null){
+                    monster[i].update();
                 }
             }
 
@@ -148,7 +155,12 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
 
-            // EVENTS
+            // MONSTERS
+            for (int i=0; i < monster.length; i++){
+                if (monster[i] != null){
+                    monster[i].draw(g2);
+                }
+            }
 
 
             // PLAYER

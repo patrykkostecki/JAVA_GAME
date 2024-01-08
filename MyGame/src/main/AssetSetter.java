@@ -1,7 +1,10 @@
 package main;
 
 import entity.*;
+import monster.ZombieMan;
 import object.*;
+
+import java.util.zip.ZipOutputStream;
 
 public class AssetSetter {
 
@@ -76,6 +79,22 @@ public class AssetSetter {
         gp.npc[7] = new NPC_Bubi(gp);
         gp.npc[7].worldX = 14 * gp.tileSize;
         gp.npc[7].worldY = 17 * gp.tileSize;
+    }
+
+    public void setMonster(){
+
+        gp.monster[0] = new ZombieMan(gp);
+        gp.monster[0].worldX = 45 * gp.tileSize;
+        gp.monster[0].worldY = 17 * gp.tileSize;
+
+//        gp.monster[1] = new ZombieMan(gp);
+//        gp.monster[1].worldX = 42 * gp.tileSize;
+//        gp.monster[1].worldY = 17 * gp.tileSize;
+//
+//        gp.monster[2] = new ZombieMan(gp);
+//        gp.monster[2].worldX = 45 * gp.tileSize;
+//        gp.monster[2].worldY = 17 * gp.tileSize;
+
     }
 
 }
