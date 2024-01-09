@@ -83,7 +83,65 @@ public class AssetSetter {
         gp.npc[8] = new NPC_Rafal(gp);
         gp.npc[8].worldX = 15 * gp.tileSize;
         gp.npc[8].worldY = 53 * gp.tileSize;
+
+        gp.npc[9] = new NPC_Ochrona_Gun(gp);
+        gp.npc[9].worldX = 55 * gp.tileSize;
+        gp.npc[9].worldY = 37 * gp.tileSize;
+
+        gp.npc[10] = new NPC_Ochrona_AK47(gp);
+        gp.npc[10].worldX = 32 * gp.tileSize;
+        gp.npc[10].worldY = 7 * gp.tileSize;
+
+        gp.npc[11] = new NPC_Ochrona_P90(gp);
+        gp.npc[11].worldX = 36 * gp.tileSize;
+        gp.npc[11].worldY = 7 * gp.tileSize;
+
+        gp.npc[12] = new NPC_Ochrona_AK47(gp);
+        gp.npc[12].worldX = 54 * gp.tileSize;
+        gp.npc[12].worldY = 38 * gp.tileSize;
+
+        gp.npc[13] = new NPC_Ochrona_P90(gp);
+        gp.npc[13].worldX = 21 * gp.tileSize;
+        gp.npc[13].worldY = 53 * gp.tileSize;
+
+        gp.npc[14] = new NPC_Ochrona_AK47(gp);
+        gp.npc[14].worldX = 29 * gp.tileSize;
+        gp.npc[14].worldY = 52 * gp.tileSize;
+
+        gp.npc[15] = new NPC_Ochrona_AK47(gp);
+        gp.npc[15].worldX = -2 * gp.tileSize;
+        gp.npc[15].worldY = 52 * gp.tileSize;
+
+        gp.npc[16] = new NPC_Dziekan(gp);
+        gp.npc[16].worldX = 15 * gp.tileSize;
+        gp.npc[16].worldY = 47 * gp.tileSize;
+
+        gp.npc[17] = new NPC_Minecraft_Fan(gp);
+        gp.npc[17].worldX = 25 * gp.tileSize;
+        gp.npc[17].worldY = 43 * gp.tileSize;
+
+        gp.npc[18] = new NPC_Oskar(gp);
+        gp.npc[18].worldX = 43 * gp.tileSize;
+        gp.npc[18].worldY = 37 * gp.tileSize;
+
+        gp.npc[19] = new NPC_Karol(gp);
+        gp.npc[19].worldX = 32 * gp.tileSize;
+        gp.npc[19].worldY = 15 * gp.tileSize;
+
+        gp.npc[20] = new NPC_Martwy_Man(gp);
+        gp.npc[20].worldX = 37 * gp.tileSize;
+        gp.npc[20].worldY = 36 * gp.tileSize;
+
+        gp.npc[21] = new NPC_Medyk(gp);
+        gp.npc[21].worldX = 37 * gp.tileSize;
+        gp.npc[21].worldY = 34 * gp.tileSize;
+
+        gp.npc[22] = new NPC_Wozna_Phone(gp);
+        gp.npc[22].worldX = 34 * gp.tileSize;
+        gp.npc[22].worldY = 25 * gp.tileSize;
+
     }
+
 
     public void setMonster(){
 

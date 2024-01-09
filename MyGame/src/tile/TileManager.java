@@ -181,9 +181,12 @@ public class TileManager {
             tile[41].image = ImageIO.read(getClass().getResourceAsStream("/tiles/schody_barrier_1.png"));
             tile[41].colission = true;
 
+            tile[43] = new Tile();
+            tile[43].image = ImageIO.read(getClass().getResourceAsStream("/tiles/schody_barrier_2.png"));
+            tile[43].colission = true;
+
             tile[42] = new Tile();
-            tile[42].image = ImageIO.read(getClass().getResourceAsStream("/tiles/schody_barrier_2.png"));
-            tile[42].colission = true;
+            tile[42].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wykladzina.png"));
 
             //ARENA
             tile[50] = new Tile();
@@ -203,7 +206,7 @@ public class TileManager {
 
             // EVENTY
             tile[81] = new Tile();
-            tile[81].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arena.png"));
+            tile[81].image = ImageIO.read(getClass().getResourceAsStream("/tiles/apteczka.png"));
 
             tile[80] = new Tile();
             tile[80].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Czern.png"));
@@ -216,6 +219,9 @@ public class TileManager {
 
             tile[84] = new Tile();
             tile[84].image = ImageIO.read(getClass().getResourceAsStream("/tiles/dziekan2.png"));
+
+            tile[75] = new Tile();
+            tile[75].image = ImageIO.read(getClass().getResourceAsStream("/tiles/apteczka_sp.png"));
 
             //Barykady
 
@@ -231,6 +237,14 @@ public class TileManager {
 
             tile[88] = new Tile();
             tile[88].image = ImageIO.read(getClass().getResourceAsStream("/tiles/kolce.png"));
+
+            tile[89] = new Tile();
+            tile[89].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barykadasm.png"));
+            tile[89].colission = true;
+
+            tile[62] = new Tile();
+            tile[62].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barykadasmp.png"));
+            tile[62].colission = true;
 
 
             tile[90] = new Tile();
@@ -263,6 +277,22 @@ public class TileManager {
             tile[99] = new Tile();
             tile[99].image = ImageIO.read(getClass().getResourceAsStream("/tiles/lawka2.png"));
             tile[99].colission = true;
+
+            tile[19] = new Tile();
+            tile[19].image = ImageIO.read(getClass().getResourceAsStream("/tiles/ammo_grassy.png"));
+
+            tile[24] = new Tile();
+            tile[24].image = ImageIO.read(getClass().getResourceAsStream("/tiles/ammo_sp.png"));
+
+            tile[45] = new Tile();
+            tile[45].image = ImageIO.read(getClass().getResourceAsStream("/tiles/ammo_pj.png"));
+
+            tile[55] = new Tile();
+            tile[55].image = ImageIO.read(getClass().getResourceAsStream("/tiles/smieci.png"));
+
+            tile[76] = new Tile();
+            tile[76].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fotel.png"));
+
 
 
         } catch (IOException e) {
