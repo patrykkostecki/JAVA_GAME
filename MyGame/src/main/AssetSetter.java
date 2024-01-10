@@ -44,6 +44,14 @@ public class AssetSetter {
         gp.obj[6].worldX = 20 * gp.tileSize;
         gp.obj[6].worldY = 47 * gp.tileSize;
 
+        gp.obj[7] = new Ammo();
+        gp.obj[7].worldX = 26 * gp.tileSize;
+        gp.obj[7].worldY = 11 * gp.tileSize;
+
+        gp.obj[8] = new Ammo();
+        gp.obj[8].worldX = 39 * gp.tileSize;
+        gp.obj[8].worldY = 11 * gp.tileSize;
+
     }
 
     public void setNPC(){
@@ -149,13 +157,53 @@ public class AssetSetter {
         gp.monster[0].worldX = 45 * gp.tileSize;
         gp.monster[0].worldY = 17 * gp.tileSize;
 
-//        gp.monster[1] = new ZombieMan(gp);
-//        gp.monster[1].worldX = 42 * gp.tileSize;
-//        gp.monster[1].worldY = 17 * gp.tileSize;
-//
-//        gp.monster[2] = new ZombieMan(gp);
-//        gp.monster[2].worldX = 45 * gp.tileSize;
-//        gp.monster[2].worldY = 17 * gp.tileSize;
+        gp.monster[1] = new ZombieMan(gp);
+        gp.monster[1].worldX = 30 * gp.tileSize;
+        gp.monster[1].worldY = 60 * gp.tileSize;
+
+        gp.monster[2] = new ZombieMan(gp);
+        gp.monster[2].worldX = 33 * gp.tileSize;
+        gp.monster[2].worldY = 60 * gp.tileSize;
+
+        gp.monster[3] = new ZombieMan(gp);
+        gp.monster[3].worldX = 36 * gp.tileSize;
+        gp.monster[3].worldY = 60 * gp.tileSize;
+
+        gp.monster[4] = new ZombieMan(gp);
+        gp.monster[4].worldX = 39 * gp.tileSize;
+        gp.monster[4].worldY = 60 * gp.tileSize;
+
+        gp.monster[5] = new ZombieMan(gp);
+        gp.monster[5].worldX = 42 * gp.tileSize;
+        gp.monster[5].worldY = 60 * gp.tileSize;
+
+        gp.monster[6] = new ZombieMan(gp);
+        gp.monster[6].worldX = 33 * gp.tileSize;
+        gp.monster[6].worldY = 63 * gp.tileSize;
+
+        gp.monster[7] = new ZombieMan(gp);
+        gp.monster[7].worldX = 36 * gp.tileSize;
+        gp.monster[7].worldY = 63 * gp.tileSize;
+
+        gp.monster[8] = new ZombieMan(gp);
+        gp.monster[8].worldX = 39 * gp.tileSize;
+        gp.monster[8].worldY = 66 * gp.tileSize;
+
+        gp.monster[9] = new ZombieMan(gp);
+        gp.monster[9].worldX = 42 * gp.tileSize;
+        gp.monster[9].worldY = 66 * gp.tileSize;
+
+        gp.monster[10] = new ZombieMan(gp);
+        gp.monster[10].worldX = 33 * gp.tileSize;
+        gp.monster[10].worldY = 69 * gp.tileSize;
+
+        gp.monster[11] = new ZombieMan(gp);
+        gp.monster[11].worldX = 36 * gp.tileSize;
+        gp.monster[11].worldY = 69 * gp.tileSize;
+
+        gp.monster[12] = new ZombieMan(gp);
+        gp.monster[12].worldX = 39 * gp.tileSize;
+        gp.monster[12].worldY = 69 * gp.tileSize;
 
     }
 

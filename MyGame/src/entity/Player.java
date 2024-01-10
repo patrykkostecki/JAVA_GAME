@@ -3,15 +3,19 @@ package entity;
 import main.Game;
 import main.GamePanel;
 import main.KeyHandler;
+import object.Bullet;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Player extends Entity{
-
-
+    public Bullet[] bullets = new Bullet[10];
+    public int maxBullets = 10;
     private int originalWidth;
     private int originalHeight;
     private int scaledWidth;
@@ -23,8 +27,15 @@ public class Player extends Entity{
     public final int screenY;
     public int hasKey = 0;
     public int skin = 1;
+    public int ammo;
+    public int level;
+    public int exp;
+    public int needExp;
+    public int damage;
 
     public Player(GamePanel gp, KeyHandler keyH){
+
+
 
 
         super(gp);
@@ -46,15 +57,22 @@ public class Player extends Entity{
         attackArea.width = 36;
         attackArea.height = 36;
 
+
+
     }
 
     public void setDefaultValues(){
          worldX = 1650;
          worldY = 450;
-         speed = 25;
+         speed = 20;
          direction = "down";
          maxLife = 6;
          life = 6;
+         ammo = 10;
+         level = 1;
+         exp = 0;
+         needExp = 10;
+         damage = 1;
     }
 
     public void getPlayerImage(){
@@ -122,6 +140,22 @@ public class Player extends Entity{
 
     public void update() {
 
+        for (int i = 0; i < maxBullets; i++) {
+            if (bullets[i] != null) {
+                bullets[i].update();
+                if (!bullets[i].alive) {
+                    bullets[i] = null;
+                }
+            }
+        }
+
+        leveling();
+
+        if (bulletCooldown > 0) {
+            bulletCooldown--;
+        }
+
+
         if (keyH.spacePressed) {
             int monsterIndex = gp.ck.checkEntity(this, gp.monster);
             if (monsterIndex != 999) {
@@ -141,7 +175,6 @@ public class Player extends Entity{
         int monsterIndex = gp.ck.checkEntity(this, gp.monster);
         contactMonster(monsterIndex);
 
-        // Logika ruchu - aktywowana tylko, gdy któryś z klawiszy ruchu jest wciśnięty
         if (keyH.downPressed || keyH.upPressed || keyH.leftPressed || keyH.rightPressed) {
             if (keyH.upPressed) {
                 direction = "up";
@@ -229,6 +262,42 @@ public class Player extends Entity{
         }
     }
 
+    public void shoot(String direction) {
+        if (bulletCooldown <= 0 && ammo > 0) {
+            System.out.println("SHOOT");
+            for (int i = 0; i < maxBullets; i++) {
+                if (bullets[i] == null) {
+                    Bullet bullet = new Bullet(gp);
+                    // Ustaw pozycję startową i kierunek pocisku
+                    int bulletX = worldX;
+                    int bulletY = worldY;
+                    if (direction.equals("up")) {
+                        bulletY -= gp.tileSize;
+                    } else if (direction.equals("down")) {
+                        bulletY += gp.tileSize;
+                    } else if (direction.equals("left")) {
+                        bulletX -= gp.tileSize;
+                    } else if (direction.equals("right")) {
+                        bulletX += gp.tileSize;
+                    } else if (direction.equals("standing")){
+                        break;
+                    }
+
+                    ammo --;
+                    bullet.alive = true;
+                    bullet.worldX = bulletX;
+                    bullet.worldY = bulletY;
+                    bullet.direction = direction;
+                    bullets[i] = bullet;
+                    bulletCooldown = bulletCooldownTime;
+                    break;
+                }
+            }
+        } else if(ammo <= 0){
+            gp.ui.showShortMessage("Brak amunicji");
+        }
+    }
+
     public void contactMonster(int i) {
         if (i != 999) {
             if (!invincible) {
@@ -246,17 +315,47 @@ public class Player extends Entity{
             if (gp.monster[i].invincible == false){
 
                 gp.playSoundEffect(4);
-                gp.monster[i].life -= 1;
+                gp.monster[i].life -= damage;
                 gp.monster[i].invincible = true;
                 gp.monster[i].damageReaction();
 
                 if (gp.monster[i].life <= 0){
                     gp.monster[i].dying = true;
+                    gp.player.exp += 10;
                 }
 
             }
         }
+    }
 
+    public void leveling(){
+        if (exp >= 10 && exp < 50){
+            level = 2;
+            needExp = 50;
+            damage = 2;
+            gp.ui.showShortMessage("Level Up!");
+        } else if (exp >= 50 && exp < 100){
+            level = 3;
+            needExp = 100;
+            damage = 3;
+            gp.ui.showShortMessage("Level Up!");
+        } else if (exp >= 100 && exp < 200){
+            level = 4;
+            needExp = 200;
+            gp.ui.showShortMessage("Level Up!");
+        } else if (exp >= 200 && exp < 500){
+            level = 5;
+            needExp = 500;
+            gp.ui.showShortMessage("Level Up!");
+        } else if (exp >= 550 && exp < 1000){
+            level = 6;
+            needExp = 1000;
+            gp.ui.showShortMessage("Level Up!");
+        } else if (exp > 1000){
+            level = 7;
+            needExp = 1000;
+            gp.ui.showShortMessage("Level Up!");
+        }
     }
 
     public void attacking(){
@@ -326,21 +425,22 @@ public class Player extends Entity{
                     gp.ui.showMessage("Odwołano zajęcia!");
                     break;
                 case "EatAutomat":
-                    gp.player.speed = 6;
+                    gp.player.speed += 3;
                     gp.ui.showMessage("Speed up!");
                     //gp.obj[i] = null;
                     break;
                 case "Finish":
                     gp.ui.gameFinished = true;
                     break;
+                case "Ammo":
+                    gp.ui.showMessage("Dodatkowa amunicja");
+                    gp.player.ammo += 20;
+                    gp.obj[i] = null;
             }
         }
     }
 
     public void draw(Graphics2D g2) {
-
-        int tempScreenX = screenX;
-        int tempScreenY = screenY;
 
         BufferedImage image = null;
 
@@ -419,6 +519,10 @@ public class Player extends Entity{
         if(bottomStop > gp.worldHeight - worldY){
             y = gp.screenHeight - (gp.worldHeight - worldY);
         }
+//
+//        for (Bullet bullet : bullets) {
+//            bullet.draw(g2);
+//        }
 
         if (invincible == true){
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f));

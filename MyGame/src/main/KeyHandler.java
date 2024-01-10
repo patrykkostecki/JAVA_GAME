@@ -6,7 +6,8 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     GamePanel gp;
-    public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed,
+            shootingPressedUp,shootingPressedDown, shootingPressedLeft, shootingPressedRight;
 
     public KeyHandler(GamePanel gp){
         this.gp = gp;
@@ -113,6 +114,38 @@ public class KeyHandler implements KeyListener {
                 }
                 if (code == KeyEvent.VK_SPACE) {
                     spacePressed = true;
+                }
+                if (code == KeyEvent.VK_UP){
+                    shootingPressedUp = true;
+                }
+                if (code == KeyEvent.VK_DOWN){
+                    shootingPressedDown = true;
+                }
+                if (code == KeyEvent.VK_LEFT){
+                    shootingPressedLeft = true;
+                }
+                if (code == KeyEvent.VK_UP){
+                    shootingPressedRight = true;
+            }
+                if (code == KeyEvent.VK_UP) {
+                    if (gp.gameState == gp.playState) {
+                        gp.player.shoot("up");
+                    }
+                }
+                if (code == KeyEvent.VK_DOWN) {
+                    if (gp.gameState == gp.playState) {
+                        gp.player.shoot("down");
+                    }
+                }
+                if (code == KeyEvent.VK_LEFT) {
+                    if (gp.gameState == gp.playState) {
+                        gp.player.shoot("left");
+                    }
+                }
+                if (code == KeyEvent.VK_RIGHT) {
+                    if (gp.gameState == gp.playState) {
+                        gp.player.shoot("right");
+                    }
                 }
             }
         if (code == KeyEvent.VK_P) {

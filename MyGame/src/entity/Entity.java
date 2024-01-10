@@ -30,6 +30,9 @@ public class Entity {
     public boolean invincible = false;
     public int invincibleCounter = 0;
     public String dialogues[] = new String[20];
+    public int bulletCooldown = 0;
+    public int bulletCooldownTime = 30;
+
     int dialogueIndex = 0;
     public int type; // 0 - player, 1 - npc, 2 - monster
 

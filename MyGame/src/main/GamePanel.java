@@ -2,6 +2,7 @@ package main;
 
 import entity.Entity;
 import entity.Player;
+import object.Bullet;
 import object.SuperObject;
 import tile.Tile;
 import tile.TileManager;
@@ -111,6 +112,15 @@ public class GamePanel extends JPanel implements Runnable{
             // PLAYER
             player.update();
 
+            // BULLETS
+            for (int i = 0; i < player.maxBullets; i++) {
+                Bullet bullet = player.bullets[i];
+                if (bullet != null) {
+                    bullet.update();
+                    bullet.checkCollisionWithMonsters(monster);
+                }
+            }
+
             // NPC
             for (int i=0; i<npc.length;i++){
                 if (npc[i] != null){
@@ -167,9 +177,15 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
 
-
             // PLAYER
             player.draw(g2);
+
+            // BULLETS
+            for (int i = 0; i < player.maxBullets; i++) {
+                if (player.bullets[i] != null) {
+                    player.bullets[i].draw(g2);
+                }
+            }
 
             // NPC
             for (int i=0; i < npc.length; i++){

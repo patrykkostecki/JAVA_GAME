@@ -23,16 +23,18 @@ public class EventHandler {
 
     public void checkEvent(){
 
-        if (hit(30,17,"down") == true ){
-
-            damagePit(gp.dialogueState);
-
-        }
-        if (hit(32,17,"down") == true ){
-
+//        if (hit(30,17,"down") == true ){
+//
+//            damagePit(gp.dialogueState);
+//
+//        }
+        if (hit(26,10,"left") == true ){
             headlingPool(gp.dialogueState);
-
         }
+        if (hit(39,10,"right") == true ){
+            headlingPool(gp.dialogueState);
+        }
+
 
 
     }
@@ -70,7 +72,12 @@ public class EventHandler {
         //if (gp.keyH.spacePressed == true){
             gp.gameState = gameState;
             gp.ui.correntDialogue = "Uleczono";
-            gp.player.life ++;
+            if (gp.player.life == gp.player.maxLife){
+                gp.ui.correntDialogue = "Masz pełne życie!";
+            } else if(gp.player.life < gp.player.maxLife){
+                gp.player.life ++;
+            }
+
        // }
 
     }

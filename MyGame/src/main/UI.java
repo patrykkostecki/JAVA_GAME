@@ -3,6 +3,7 @@ package main;
 import entity.NPC_Dendzik;
 import object.Heart;
 import object.Key;
+import object.Logo;
 import object.SuperObject;
 
 import javax.imageio.ImageIO;
@@ -15,9 +16,10 @@ public class UI {
     NPC_Dendzik npc;
     GamePanel gp;
     Graphics2D g2;
-    Font arial_40, arial_80;
+    Font arial_20, arial_40, arial_80;
     BufferedImage keyImage;
     BufferedImage heart_full, heart_half, heart_blank;
+    BufferedImage mainLogo;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -25,6 +27,7 @@ public class UI {
     public String correntDialogue = "";
     public int commandNum = 0;
     public int titleScreenState = 0;
+    public int howLong = 120;
 
 
 
@@ -33,6 +36,7 @@ public class UI {
 
         arial_80 = new Font("Arial", Font.PLAIN, 80);
         arial_40 = new Font("Arial", Font.PLAIN, 40);
+        arial_20 = new Font("Arial", Font.PLAIN, 20);
         Key key = new Key();
         keyImage = key.image;
 
@@ -42,6 +46,22 @@ public class UI {
         heart_half = heart.image2;
         heart_blank = heart.image3;
 
+        // LOGO
+        SuperObject logo = new Logo(gp);
+        mainLogo = logo.image;
+
+    }
+
+    public void showShortMessage(String text){
+
+        message = text;
+        if (howLong > 0){
+            messageOn = true;
+            howLong--;
+//            System.out.println(howLong);
+        } else{
+            messageOn = false;
+        }
     }
 
     public void showMessage(String text){
@@ -98,11 +118,20 @@ public class UI {
 
             } else{
 
-                g2.setFont(arial_40);
-                g2.setColor(Color.darkGray);
+                g2.setFont(arial_20);
+                g2.setColor(Color.black);
                 g2.drawImage(keyImage, gp.tileSize/2, gp.tileSize/2 + 470, gp.tileSize, gp.tileSize, null);
+                drawStatWindow();
                 g2.drawString("  : " + gp.player.hasKey, 60 ,530);
-                g2.drawString("Speed: "+ gp.player.speed, 550, 60);
+                g2.setColor(Color.green);
+                g2.drawString("Level: "+ gp.player.level, 600, 70);
+                g2.setColor(Color.white);
+                g2.drawString("Attack: "+ gp.player.damage, 600, 100);
+                g2.drawString("Speed: "+ gp.player.speed, 600, 130);
+                g2.drawString("Ammo: "+ gp.player.ammo, 600, 160);
+                g2.setColor(Color.yellow);
+                g2.drawString("Exp: "+ gp.player.exp + "/" + gp.player.needExp, 600, 220);
+
 
                 // TEXT MSG
                 if (messageOn == true){
@@ -187,10 +216,9 @@ public class UI {
             g2.setColor(Color.white);
             g2.drawString(text, x, y);
 
-            // IMAGE
-//        x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
-//        y += gp.tileSize * 2;
-//        g2.drawImage(npc.standing1, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
+            x = gp.screenWidth / 2 - (gp.tileSize * 2) / 2;
+            y = gp.tileSize * 2;
+            g2.drawImage(mainLogo, x - 30, y + 60, gp.tileSize * 3, gp.tileSize * 3, null);
 
             // MENU
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
@@ -311,6 +339,21 @@ public class UI {
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x + 5, y+5, width-10, height-10,25,25);
 
+    }
+
+    public void drawStatWindow(){
+        int x = 580;
+        int y = 30;
+        int width = 140;
+        int height = 230;
+        Color color = new Color(0,0,0,200);
+        g2.setColor(color);
+        g2.fillRoundRect(x,y,width,height,35,35);
+
+        color = new Color(255,255,255);
+        g2.setColor(color);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x + 3, y+3, width-10, height-10,25,25);
     }
 
     public int centerX(String text){
