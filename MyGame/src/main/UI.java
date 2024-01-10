@@ -13,6 +13,9 @@ import java.io.IOException;
 
 public class UI {
 
+    public boolean musicPlayed = false;
+
+
     NPC_Dendzik npc;
     GamePanel gp;
     Graphics2D g2;
@@ -32,6 +35,7 @@ public class UI {
 
 
     public UI(GamePanel gp){
+        loadBackgrounds();
         this.gp = gp;
 
         arial_80 = new Font("Arial", Font.PLAIN, 80);
@@ -197,12 +201,30 @@ public class UI {
 
     }
 
+
+    //TŁA
+    BufferedImage backgroundImg;
+    BufferedImage characterSelectBackgroundImg;
+
+    public void loadBackgrounds() {
+        try {
+            backgroundImg = ImageIO.read(getClass().getResourceAsStream("/tiles/tlo.png"));
+            characterSelectBackgroundImg = ImageIO.read(getClass().getResourceAsStream("/tiles/tlo.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void drawMenuScreen(){
 
         if (titleScreenState == 0){
-            // BACKGROUND
-            g2.setColor(Color.darkGray);
-            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+
+//            // BACKGROUND
+//            g2.setColor(Color.darkGray);
+//            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+            if (backgroundImg != null) {
+                g2.drawImage(backgroundImg, 0, 0, gp.screenWidth, gp.screenHeight, null);
+            }
 
             // TEXT
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
@@ -249,6 +271,10 @@ public class UI {
             }
         } else if (titleScreenState == 1){
 
+            if (characterSelectBackgroundImg != null) {
+                g2.drawImage(backgroundImg, 0, 0, gp.screenWidth, gp.screenHeight, null);
+            }
+
             // WYBOR POSTACI
             g2.setColor(Color.white);
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
@@ -293,7 +319,6 @@ public class UI {
             if (commandNum  == 3){
                 g2.drawString(">",x - gp.tileSize,y);
             }
-
         }
     }
 
@@ -360,6 +385,22 @@ public class UI {
         int textLenght = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth/2 - textLenght/2;
         return x;
+    }
+
+    public void music_menu() {
+        if (gp.gameState == gp.menuState) {
+            if (!musicPlayed) {
+                gp.playMusic(0);
+                musicPlayed = true;
+            }
+        } else if (gp.gameState == gp.playState) {
+            if (musicPlayed) {
+                gp.stopMusic();
+                musicPlayed = false;
+                gp.playMusic(7);
+                System.out.println("Gra 7");
+            }
+        }
     }
 
 }

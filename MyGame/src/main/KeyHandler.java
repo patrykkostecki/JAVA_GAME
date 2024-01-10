@@ -30,6 +30,7 @@ public class KeyHandler implements KeyListener {
                     if (gp.ui.commandNum < 0) {
                         gp.ui.commandNum = 2;
                     }
+
                 }
                 if (code == KeyEvent.VK_S) {
                     gp.ui.commandNum++;
@@ -40,7 +41,6 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_ENTER) {
                     if (gp.ui.commandNum == 0) {
                         gp.ui.titleScreenState = 1;
-//                    gp.playMusic(0);
 
                     }
                     if (code == KeyEvent.VK_ENTER) {
@@ -74,6 +74,7 @@ public class KeyHandler implements KeyListener {
                             gp.player.skin = 1;
                             gp.player.getPlayerImage();
                             gp.player.getPlayerAttackImage();
+                            gp.ui.titleScreenState = 2;
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 1) {
@@ -93,7 +94,7 @@ public class KeyHandler implements KeyListener {
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 3) {
-                            gp.ui.titleScreenState = 0;
+//                            gp.ui.titleScreenState = 0;
                         }
                         gp.repaint();
                     }
