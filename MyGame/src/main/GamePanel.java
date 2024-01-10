@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     public ColissionChecker ck = new ColissionChecker(this);
     public Sound sound = new Sound();
+    public Sound2 sound2 = new Sound2();
     public UI ui = new UI(this);
     public AssetSetter ac = new AssetSetter(this);
     public EventHandler eHandler = new EventHandler(this);
@@ -101,14 +102,13 @@ public class GamePanel extends JPanel implements Runnable{
                 // System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
-            }
+                }
             }
         }
     }
 
     public void update(){
-
-        ui.music_menu();
+        //ui.musicMenu();
 
         if(gameState == playState){
             // PLAYER
@@ -141,7 +141,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
 
         }
-        if(gameState == stopState){
+        else if(gameState == stopState){
 
         }
 
@@ -206,7 +206,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void playMusic(int i){
         sound.setFile(i);
-        sound.stop();
+        sound.play();
         sound.loop();
     }
     public void stopMusic()
@@ -217,7 +217,11 @@ public class GamePanel extends JPanel implements Runnable{
     public void playSoundEffect(int i){
         sound.setFile(i);
         sound.play();
-        sound.stop();
+    }
+
+    public void playSoundEffect2(int i){
+        sound2.setFile(i);
+        sound2.play();
     }
 }
 

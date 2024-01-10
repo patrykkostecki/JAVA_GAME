@@ -387,18 +387,27 @@ public class UI {
         return x;
     }
 
-    public void music_menu() {
+    public void musicMenu() {
+        System.out.println("Aktualny stan gry: " + gp.gameState);
+
         if (gp.gameState == gp.menuState) {
             if (!musicPlayed) {
+                System.out.println("Odtwarzanie muzyki menu");
                 gp.playMusic(0);
                 musicPlayed = true;
             }
         } else if (gp.gameState == gp.playState) {
             if (musicPlayed) {
+                System.out.println("Zatrzymanie muzyki menu i odtwarzanie muzyki gry");
                 gp.stopMusic();
                 musicPlayed = false;
                 gp.playMusic(7);
-                System.out.println("Gra 7");
+            }
+        } else {
+            if (musicPlayed) {
+                System.out.println("Zatrzymywanie muzyki");
+                gp.stopMusic();
+                musicPlayed = false;
             }
         }
     }

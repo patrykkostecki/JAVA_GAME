@@ -219,10 +219,11 @@ public class Player extends Entity{
                 }
             }
 
-        }
-     else {
+        } else {
         // Jeśli żaden klawisz nie jest wciśnięty, ustaw kierunek na "standing"
         direction = "standing";
+
+        deadPlayer();
     }
 
         // Aktualizacja animacji postaci
@@ -397,7 +398,16 @@ public class Player extends Entity{
             spriteCounter = 0;
             attacking = false;
         }
+    }
 
+    public void deadPlayer(){
+        if(life <= 0) {
+            System.out.println("DEAD");
+            gp.gameState = gp.menuState;
+            gp.ui.titleScreenState = 0;
+            setDefaultValues();
+            setAction();
+        }
     }
     public void pickUpObject(int i){
 
@@ -427,7 +437,7 @@ public class Player extends Entity{
                 case "EatAutomat":
                     gp.player.speed += 3;
                     gp.ui.showMessage("Speed up!");
-                    //gp.obj[i] = null;
+                    gp.obj[i] = null;
                     break;
                 case "Finish":
                     gp.ui.gameFinished = true;

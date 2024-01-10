@@ -6,21 +6,15 @@ import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.net.URL;
 
-public class Sound {
+public class Sound2 {
 
     Clip clip;
     URL soundURL[] = new URL[30];
 
-    public Sound(){
+    public Sound2(){
 
-        soundURL[0] = getClass().getResource("/sound/SMCEBI_Theme_Menu.wav");
-        soundURL[1] = getClass().getResource("/sound/pickup.wav");
-        soundURL[2] = getClass().getResource("/sound/openDoor.wav");
-        soundURL[3] = getClass().getResource("/sound/hitmonster.wav");
-        soundURL[4] = getClass().getResource("/sound/receivedamage.wav");
-        soundURL[5] = getClass().getResource("/sound/attack.wav");
-        soundURL[6] = getClass().getResource("/sound/Menu_wasd.wav");
-        soundURL[7] = getClass().getResource("/sound/SMCEBI_Game_Background.wav");
+        soundURL[0] = getClass().getResource("/sound/Menu_wasd.wav");
+
 
 
     }

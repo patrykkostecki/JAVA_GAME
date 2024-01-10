@@ -27,6 +27,7 @@ public class KeyHandler implements KeyListener {
 
                 if (code == KeyEvent.VK_W) {
                     gp.ui.commandNum--;
+                    gp.playSoundEffect2(0);
                     if (gp.ui.commandNum < 0) {
                         gp.ui.commandNum = 2;
                     }
@@ -34,6 +35,7 @@ public class KeyHandler implements KeyListener {
                 }
                 if (code == KeyEvent.VK_S) {
                     gp.ui.commandNum++;
+                    gp.playSoundEffect2(0);
                     if (gp.ui.commandNum > 2) {
                         gp.ui.commandNum = 0;
                     }

@@ -22,8 +22,8 @@ public class Bullet extends SuperObject{
         name = "Bullet";
         int distanceTraveled = 0;
         final int maxDistance = 4 * gp.tileSize;
-        this.lifeSpan = 60;
-        this.speed = 3;
+        this.lifeSpan = 22;
+        this.speed = 8;
 
 
 
