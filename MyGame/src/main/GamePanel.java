@@ -4,10 +4,9 @@ import entity.Entity;
 import entity.Player;
 import object.Bullet;
 import object.SuperObject;
-import tile.Tile;
 import tile.TileManager;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -42,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable{
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
     public Entity npc[] = new Entity[30];
-    public Entity monster[] = new Entity[30];
+    public Entity monster[] = new Entity[100];
 
     // GAME STATE
     public int gameState;
@@ -108,7 +107,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void update(){
-        //ui.musicMenu();
+        ui.musicMenu();
 
         if(gameState == playState){
             // PLAYER
@@ -209,9 +208,18 @@ public class GamePanel extends JPanel implements Runnable{
         sound.play();
         sound.loop();
     }
+    public void playMusic2(int i){
+        sound2.setFile(i);
+        sound2.play();
+        sound2.loop();
+    }
     public void stopMusic()
     {
         sound.stop();
+    }
+    public void stopMusic2()
+    {
+        sound2.stop();
     }
 
     public void playSoundEffect(int i){

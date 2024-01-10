@@ -1,15 +1,20 @@
 package main;
 
+import entity.Player;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
-
+    Player pl;
     GamePanel gp;
+
+    public boolean footstep = false;
     public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed,
             shootingPressedUp,shootingPressedDown, shootingPressedLeft, shootingPressedRight;
 
-    public KeyHandler(GamePanel gp){
+    public KeyHandler(GamePanel gp)
+    {
         this.gp = gp;
     }
 
@@ -42,11 +47,13 @@ public class KeyHandler implements KeyListener {
                 }
                 if (code == KeyEvent.VK_ENTER) {
                     if (gp.ui.commandNum == 0) {
+                        gp.playSoundEffect2(3);
                         gp.ui.titleScreenState = 1;
 
                     }
                     if (code == KeyEvent.VK_ENTER) {
                         if (gp.ui.commandNum == 2) {
+                            gp.playSoundEffect2(3);
                             System.exit(0);
                         }
                     }
@@ -57,6 +64,7 @@ public class KeyHandler implements KeyListener {
                 if (gp.gameState == gp.menuState) {
 
                     if (code == KeyEvent.VK_W) {
+                        gp.playSoundEffect2(0);
                         gp.ui.commandNum--;
                         if (gp.ui.commandNum < 0) {
                             gp.ui.commandNum = 3;
@@ -64,6 +72,7 @@ public class KeyHandler implements KeyListener {
                         gp.repaint();
                     }
                     if (code == KeyEvent.VK_S) {
+                        gp.playSoundEffect2(0);
                         gp.ui.commandNum++;
                         if (gp.ui.commandNum > 3) {
                             gp.ui.commandNum = 0;
@@ -72,6 +81,7 @@ public class KeyHandler implements KeyListener {
                     }
                     if (code == KeyEvent.VK_ENTER) {
                         if (gp.ui.commandNum == 0) {
+                            gp.playSoundEffect2(3);
                             gp.gameState = gp.playState;
                             gp.player.skin = 1;
                             gp.player.getPlayerImage();
@@ -96,30 +106,51 @@ public class KeyHandler implements KeyListener {
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 3) {
-//                            gp.ui.titleScreenState = 0;
                         }
                         gp.repaint();
                     }
                 }
             } if (gp.gameState == gp.playState) {
 
+
                 if (code == KeyEvent.VK_W) {
                     upPressed = true;
+                    if (footstep == false)
+                    {
+                        gp.playMusic2(1);
+                        footstep = true;
+                    }
                 }
                 if (code == KeyEvent.VK_S) {
                     downPressed = true;
+                    if (footstep == false)
+                    {
+                        gp.playMusic2(1);
+                        footstep = true;
+                    }
                 }
                 if (code == KeyEvent.VK_A) {
                     leftPressed = true;
+                    if (footstep == false)
+                    {
+                        gp.playMusic2(1);
+                        footstep = true;
+                    }
                 }
                 if (code == KeyEvent.VK_D) {
                     rightPressed = true;
+                    if (footstep == false)
+                    {
+                        gp.playMusic2(1);
+                        footstep = true;
+                    }
                 }
                 if (code == KeyEvent.VK_SPACE) {
                     spacePressed = true;
                 }
                 if (code == KeyEvent.VK_UP){
                     shootingPressedUp = true;
+
                 }
                 if (code == KeyEvent.VK_DOWN){
                     shootingPressedDown = true;
@@ -133,21 +164,25 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_UP) {
                     if (gp.gameState == gp.playState) {
                         gp.player.shoot("up");
+                        shot_sound_effect();
                     }
                 }
                 if (code == KeyEvent.VK_DOWN) {
                     if (gp.gameState == gp.playState) {
                         gp.player.shoot("down");
+                        shot_sound_effect();
                     }
                 }
                 if (code == KeyEvent.VK_LEFT) {
                     if (gp.gameState == gp.playState) {
                         gp.player.shoot("left");
+                        shot_sound_effect();
                     }
                 }
                 if (code == KeyEvent.VK_RIGHT) {
                     if (gp.gameState == gp.playState) {
                         gp.player.shoot("right");
+                        shot_sound_effect();
                     }
                 }
             }
@@ -172,15 +207,47 @@ public class KeyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_W){
             upPressed = false;
+            if (footstep == true)
+            {
+                gp.stopMusic2();
+                footstep = false;
+            }
         }
         if (code == KeyEvent.VK_S){
             downPressed = false;
+            if (footstep == true)
+            {
+                gp.stopMusic2();
+                footstep = false;
+            }
         }
         if (code == KeyEvent.VK_A){
             leftPressed = false;
+            if (footstep == true)
+            {
+                gp.stopMusic2();
+                footstep = false;
+            }
         }
         if (code == KeyEvent.VK_D){
             rightPressed = false;
+            if (footstep == true)
+            {
+                gp.stopMusic2();
+                footstep = false;
+            }
         }
+    }
+    public void shot_sound_effect()
+    {
+        if (gp.player.ammo > 0)
+        {
+            gp.playSoundEffect(9);
+        }
+        else
+        {
+            gp.playSoundEffect(8);
+        }
+
     }
 }

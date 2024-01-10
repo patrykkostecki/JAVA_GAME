@@ -17,6 +17,7 @@ public class TileManager {
 
     public TileManager(GamePanel gp){
 
+
         this.gp = gp;
         tile = new Tile[110];
         getTileImage();
@@ -26,7 +27,6 @@ public class TileManager {
     }
 
     public void getTileImage() {
-
         try {
 
             tile[0] = new Tile();
@@ -393,9 +393,12 @@ public class TileManager {
 
         }
 
+
+
 //            g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
 //            g2.drawImage(tile[1].image, 48, 0, gp.tileSize, gp.tileSize, null);
 //            g2.drawImage(tile[2].image, 96, 0, gp.tileSize, gp.tileSize, null);
         }
+
 
 }

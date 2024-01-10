@@ -3,7 +3,6 @@ package main;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import java.io.IOException;
 import java.net.URL;
 
 public class Sound {
@@ -17,10 +16,16 @@ public class Sound {
         soundURL[1] = getClass().getResource("/sound/pickup.wav");
         soundURL[2] = getClass().getResource("/sound/openDoor.wav");
         soundURL[3] = getClass().getResource("/sound/hitmonster.wav");
-        soundURL[4] = getClass().getResource("/sound/receivedamage.wav");
+        soundURL[4] = getClass().getResource("/sound/hitmonster2.wav");
         soundURL[5] = getClass().getResource("/sound/attack.wav");
-        soundURL[6] = getClass().getResource("/sound/Menu_wasd.wav");
+//        soundURL[6] = getClass().getResource("/sound/Menu_wasd.wav");
         soundURL[7] = getClass().getResource("/sound/SMCEBI_Game_Background.wav");
+        soundURL[8] = getClass().getResource("/sound/Gun_shoot.wav");
+        soundURL[9] = getClass().getResource("/sound/Gun_shoot2.wav");
+
+
+//        soundURL[10] = getClass().getResource("/sound/enter.wav");
+//        soundURL[10] = getClass().getResource("/sound/footstep.wav");
 
 
     }

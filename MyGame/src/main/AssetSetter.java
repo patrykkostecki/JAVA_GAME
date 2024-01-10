@@ -2,9 +2,8 @@ package main;
 
 import entity.*;
 import monster.ZombieMan;
+import monster.Zoombie_Woman;
 import object.*;
-
-import java.util.zip.ZipOutputStream;
 
 public class AssetSetter {
 
@@ -153,57 +152,21 @@ public class AssetSetter {
 
     public void setMonster(){
 
-        gp.monster[0] = new ZombieMan(gp);
-        gp.monster[0].worldX = 45 * gp.tileSize;
-        gp.monster[0].worldY = 17 * gp.tileSize;
+        int numberOfZombies = 80; // Łączna liczba zombie, którą chcesz utworzyć (13 Women + 13 Men)
+        int baseX = 25; // Początkowa współrzędna X
+        int baseY = 55; // Początkowa współrzędna Y
+        int xSpacing = 2; // Odstęp na osi X
+        int ySpacing = 2; // Odstęp na osi Y
 
-        gp.monster[1] = new ZombieMan(gp);
-        gp.monster[1].worldX = 30 * gp.tileSize;
-        gp.monster[1].worldY = 60 * gp.tileSize;
-
-        gp.monster[2] = new ZombieMan(gp);
-        gp.monster[2].worldX = 33 * gp.tileSize;
-        gp.monster[2].worldY = 60 * gp.tileSize;
-
-        gp.monster[3] = new ZombieMan(gp);
-        gp.monster[3].worldX = 36 * gp.tileSize;
-        gp.monster[3].worldY = 60 * gp.tileSize;
-
-        gp.monster[4] = new ZombieMan(gp);
-        gp.monster[4].worldX = 39 * gp.tileSize;
-        gp.monster[4].worldY = 60 * gp.tileSize;
-
-        gp.monster[5] = new ZombieMan(gp);
-        gp.monster[5].worldX = 42 * gp.tileSize;
-        gp.monster[5].worldY = 60 * gp.tileSize;
-
-        gp.monster[6] = new ZombieMan(gp);
-        gp.monster[6].worldX = 33 * gp.tileSize;
-        gp.monster[6].worldY = 63 * gp.tileSize;
-
-        gp.monster[7] = new ZombieMan(gp);
-        gp.monster[7].worldX = 36 * gp.tileSize;
-        gp.monster[7].worldY = 63 * gp.tileSize;
-
-        gp.monster[8] = new ZombieMan(gp);
-        gp.monster[8].worldX = 39 * gp.tileSize;
-        gp.monster[8].worldY = 66 * gp.tileSize;
-
-        gp.monster[9] = new ZombieMan(gp);
-        gp.monster[9].worldX = 42 * gp.tileSize;
-        gp.monster[9].worldY = 66 * gp.tileSize;
-
-        gp.monster[10] = new ZombieMan(gp);
-        gp.monster[10].worldX = 33 * gp.tileSize;
-        gp.monster[10].worldY = 69 * gp.tileSize;
-
-        gp.monster[11] = new ZombieMan(gp);
-        gp.monster[11].worldX = 36 * gp.tileSize;
-        gp.monster[11].worldY = 69 * gp.tileSize;
-
-        gp.monster[12] = new ZombieMan(gp);
-        gp.monster[12].worldX = 39 * gp.tileSize;
-        gp.monster[12].worldY = 69 * gp.tileSize;
+        for (int i = 0; i < numberOfZombies; i++) {
+            if (i % 2 == 0) {
+                gp.monster[i] = new Zoombie_Woman(gp);
+            } else {
+                gp.monster[i] = new ZombieMan(gp);
+            }
+            gp.monster[i].worldX = (baseX + (i % 4) * xSpacing) * gp.tileSize;
+            gp.monster[i].worldY = (baseY + (i / 4) * ySpacing) * gp.tileSize;
+        }
 
     }
 

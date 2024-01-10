@@ -1,6 +1,5 @@
 package entity;
 
-import main.Game;
 import main.GamePanel;
 import main.KeyHandler;
 import object.Bullet;
@@ -9,9 +8,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class Player extends Entity{
     public Bullet[] bullets = new Bullet[10];
@@ -65,7 +61,7 @@ public class Player extends Entity{
     public void setDefaultValues(){
          worldX = 1650;
          worldY = 450;
-         speed = 20;
+         speed = 4;
          direction = "down";
          maxLife = 6;
          life = 6;
@@ -254,6 +250,7 @@ public class Player extends Entity{
             if (i != 999){
                 if (gp.keyH.spacePressed == true){
                     gp.gameState = gp.dialogueState;
+
                     gp.npc[i].speak();
                 }
             } else{
@@ -304,7 +301,7 @@ public class Player extends Entity{
     public void contactMonster(int i) {
         if (i != 999) {
             if (!invincible) {
-                gp.playSoundEffect(3);
+                gp.playSoundEffect2(3);
                 life -= 1;
                 invincible = true;
                 invincibleCounter = 0; // Zresetuj licznik nieśmiertelności
@@ -317,7 +314,7 @@ public class Player extends Entity{
         if (i != 999){
             if (gp.monster[i].invincible == false){
 
-                gp.playSoundEffect(4);
+                gp.playSoundEffect2(3);
                 gp.monster[i].life -= damage;
                 gp.monster[i].invincible = true;
                 gp.monster[i].damageReaction();
@@ -549,6 +546,7 @@ public class Player extends Entity{
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
     }
+
 }
 
 
