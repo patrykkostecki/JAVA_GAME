@@ -4,10 +4,12 @@ import main.GamePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class Entity {
 
     public GamePanel gp;
+    public Random random = new Random();
     public int worldX = 0;
     public int worldY = 0;
     public int speed = 0;

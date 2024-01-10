@@ -83,6 +83,9 @@ public class Bullet extends SuperObject{
 
                     if (monster.life <= 0) {
                         gp.player.exp += 10;
+                        if(Math.random() <= 0.5){
+                            gp.player.gold += 1;
+                        }
                         monster.dying = true;
                     }
 

@@ -133,8 +133,9 @@ public class UI {
                 g2.drawString("Attack: "+ gp.player.damage, 600, 100);
                 g2.drawString("Speed: "+ gp.player.speed, 600, 130);
                 g2.drawString("Ammo: "+ gp.player.ammo, 600, 160);
+                g2.drawString("Gold: "+ gp.player.gold, 600, 190);
                 g2.setColor(Color.yellow);
-                g2.drawString("Exp: "+ gp.player.exp + "/" + gp.player.needExp, 600, 220);
+                g2.drawString("Exp: "+ gp.player.exp + "/" + gp.player.needExp, 600, 250);
 
 
                 // TEXT MSG
@@ -370,7 +371,7 @@ public class UI {
         int x = 580;
         int y = 30;
         int width = 140;
-        int height = 230;
+        int height = 260;
         Color color = new Color(0,0,0,200);
         g2.setColor(color);
         g2.fillRoundRect(x,y,width,height,35,35);

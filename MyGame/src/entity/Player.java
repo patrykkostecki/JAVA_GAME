@@ -32,6 +32,7 @@ public class Player extends Entity{
     public int exp;
     public int needExp;
     public int damage;
+    public int gold;
 
     public Player(GamePanel gp, KeyHandler keyH){
 
@@ -73,6 +74,7 @@ public class Player extends Entity{
          exp = 0;
          needExp = 10;
          damage = 1;
+         gold = 0;
     }
 
     public void getPlayerImage(){
@@ -323,6 +325,9 @@ public class Player extends Entity{
                 if (gp.monster[i].life <= 0){
                     gp.monster[i].dying = true;
                     gp.player.exp += 10;
+                    if(Math.random() <= 0.5){
+                        gold += 1;
+                    }
                 }
 
             }
