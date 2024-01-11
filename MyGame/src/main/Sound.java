@@ -58,5 +58,10 @@ public class Sound {
             clip.flush();
         }
     }
+    public void kurwa()
+    
+    {
+        System.out.println("ESSSA SZYMCIO");
+    }
 }
 
