@@ -2,6 +2,7 @@ package main;
 
 import entity.Player;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -82,26 +83,30 @@ public class KeyHandler implements KeyListener {
                     if (code == KeyEvent.VK_ENTER) {
                         if (gp.ui.commandNum == 0) {
                             gp.playSoundEffect2(3);
-                            gp.gameState = gp.playState;
+//                            gp.gameState = gp.playState;
                             gp.player.skin = 1;
                             gp.player.getPlayerImage();
                             gp.player.getPlayerAttackImage();
-                            gp.ui.titleScreenState = 2;
+                            gp.ui.titleScreenState = 3;
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 1) {
-                            gp.gameState = gp.playState;
+//                            gp.gameState = gp.playState;
                             gp.player.skin = 2;
                             gp.player.getPlayerImage();
                             gp.player.getPlayerAttackImage();
+                            gp.ui.titleScreenState = 3;
+
 
                         }
                         gp.repaint();
                         if (gp.ui.commandNum == 2) {
-                            gp.gameState = gp.playState;
+//                            gp.gameState = gp.playState;
                             gp.player.skin = 3;
                             gp.player.getPlayerImage();
                             gp.player.getPlayerAttackImage();
+                            gp.ui.titleScreenState = 3;
+
 
                         }
                         gp.repaint();
@@ -110,7 +115,11 @@ public class KeyHandler implements KeyListener {
                         gp.repaint();
                     }
                 }
-            } if (gp.gameState == gp.playState) {
+            } else if(gp.ui.titleScreenState == 3){
+            if (code == KeyEvent.VK_ENTER) {
+                gp.gameState = gp.playState;
+            }
+        } if (gp.gameState == gp.playState) {
 
 
                 if (code == KeyEvent.VK_W) {

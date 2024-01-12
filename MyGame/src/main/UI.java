@@ -324,6 +324,15 @@ public class UI {
             if (commandNum  == 3){
                 g2.drawString(">",x - gp.tileSize,y);
             }
+        } else if (titleScreenState == 3) {
+            // INTRODUCION
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+
+            String text = "TU SE DAJ TEKST ESSA";
+            int x = centerX(text);
+            int y = gp.tileSize * 3;
+            g2.drawString(text,x,y);
         }
     }
 
