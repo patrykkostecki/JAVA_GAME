@@ -250,7 +250,6 @@ public class Player extends Entity{
             if (i != 999){
                 if (gp.keyH.spacePressed == true){
                     gp.gameState = gp.dialogueState;
-
                     gp.npc[i].speak();
                 }
             } else{
@@ -410,6 +409,10 @@ public class Player extends Entity{
             setDefaultValues();
             setAction();
         }
+    }
+
+    public void pickUpObjectFromNpc(){
+
     }
     public void pickUpObject(int i){
 

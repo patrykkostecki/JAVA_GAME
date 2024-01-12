@@ -34,6 +34,8 @@ public class Entity {
     public String dialogues[] = new String[20];
     public int bulletCooldown = 0;
     public int bulletCooldownTime = 30;
+    public int currentDialogueIndex = 0;
+
 
     int dialogueIndex = 0;
     public int type; // 0 - player, 1 - npc, 2 - monster
@@ -106,6 +108,23 @@ public class Entity {
         }
     }
 
+    public void updateDialogue() {
+        if (gp.keyH.spacePressed) {
+            currentDialogueIndex++;
+            if (currentDialogueIndex >= dialogues.length || dialogues[currentDialogueIndex] == null) {
+                currentDialogueIndex = 0;
+                gp.gameState = gp.playState;
+            } else {
+                System.out.println(currentDialogueIndex);
+                gp.ui.correntDialogue = dialogues[currentDialogueIndex];
+            }
+        }
+    }
+
+
+    public void setDialogue() {
+
+    }
 
 
     public void draw(Graphics2D g2) {

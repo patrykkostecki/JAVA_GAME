@@ -88,7 +88,7 @@ public class NPC_Grzybo extends Entity{
 
     public void speak(){
 
-        gp.ui.correntDialogue = dialogues[0];
+        gp.ui.correntDialogue = dialogues[currentDialogueIndex];
 
     }
 

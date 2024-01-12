@@ -66,7 +66,7 @@ public class NPC_Ochrona_P90 extends Entity{
 
     public void speak(){
 
-        gp.ui.correntDialogue = dialogues[0];
+        gp.ui.correntDialogue = dialogues[currentDialogueIndex];
 
     }
 

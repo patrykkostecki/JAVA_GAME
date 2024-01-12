@@ -6,7 +6,11 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import java.util.Random;
 
+
 public class NPC_Wozna extends Entity{
+
+    private String dialogues[] = new String[3];
+    private boolean giveKey;
 
     public NPC_Wozna(GamePanel gp){
 
@@ -14,10 +18,10 @@ public class NPC_Wozna extends Entity{
 
         direction = "standing";
         speed = 1;
+        giveKey = true;
 
         getNPCImage();
         setDialogue();
-
     }
 
     public void getNPCImage(){
@@ -31,6 +35,10 @@ public class NPC_Wozna extends Entity{
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void update(){
+
     }
 
     public void setAction(){
@@ -57,16 +65,30 @@ public class NPC_Wozna extends Entity{
         }
     }
 
-    public void setDialogue(){
-
-        dialogues[0] = "Och chłopcze";
-
+    public void setDialogue() {
+        dialogues[0] = "";
+        dialogues[1] = "Pierwsza wiadomość";
+        dialogues[2] = "Druga wiadomość";
     }
 
-    public void speak(){
 
-        gp.ui.correntDialogue = dialogues[0];
 
+    public void speak() {
+        System.out.println("Dialog [" + currentDialogueIndex + "]: " + dialogues[currentDialogueIndex]);
+        currentDialogueIndex++;
+        System.out.println(dialogues.length);
+
+        if (currentDialogueIndex < dialogues.length){
+            gp.ui.correntDialogue = dialogues[currentDialogueIndex];
+        } else{
+            gp.gameState = gp.playState;
+            if (giveKey == true){
+                gp.player.hasKey += 1;
+                giveKey = false;
+            }
+            currentDialogueIndex = 0;
+        }
     }
+
 
 }

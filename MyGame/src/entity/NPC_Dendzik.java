@@ -90,11 +90,7 @@ public class NPC_Dendzik extends Entity{
 
     public void speak(){
 
-        if (dialogues[dialogueIndex] == null){
-            dialogueIndex = 0;
-        }
-        gp.ui.correntDialogue = dialogues[dialogueIndex];
-        dialogueIndex ++;
+        gp.ui.correntDialogue = dialogues[currentDialogueIndex];
 
     }
 

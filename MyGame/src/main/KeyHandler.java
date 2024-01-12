@@ -198,6 +198,9 @@ public class KeyHandler implements KeyListener {
                 gp.gameState = gp.playState;
             }
         }
+        if (code == KeyEvent.VK_SPACE && gp.gameState == gp.dialogueState) {
+            spacePressed = true;
+        }
     }
 
 
@@ -236,6 +239,9 @@ public class KeyHandler implements KeyListener {
                 gp.stopMusic2();
                 footstep = false;
             }
+        }
+        if (code == KeyEvent.VK_SPACE) {
+            spacePressed = false;
         }
     }
     public void shot_sound_effect()

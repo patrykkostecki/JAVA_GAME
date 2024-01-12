@@ -39,7 +39,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     // PLAYER AND OBJECTS NAD MONSTERS
     public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[10];
+    public SuperObject obj[] = new SuperObject[50];
     public Entity npc[] = new Entity[30];
     public Entity monster[] = new Entity[100];
 
@@ -108,6 +108,15 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update(){
         ui.musicMenu();
+
+        for (int i = 0; i < npc.length; i++) {
+            if (npc[i] != null) {
+                npc[i].update();
+                if (gameState == dialogueState) {
+                    npc[i].updateDialogue();
+                }
+            }
+        }
 
         if(gameState == playState){
             // PLAYER

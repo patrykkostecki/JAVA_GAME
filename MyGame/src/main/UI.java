@@ -135,7 +135,11 @@ public class UI {
                 g2.drawString("Ammo: "+ gp.player.ammo, 600, 160);
                 g2.drawString("Gold: "+ gp.player.gold, 600, 190);
                 g2.setColor(Color.yellow);
-                g2.drawString("Exp: "+ gp.player.exp + "/" + gp.player.needExp, 600, 250);
+                g2.drawString("EXP: "+ gp.player.exp + "/" + gp.player.needExp, 600, 250);
+                g2.drawString("X: "+ gp.player.worldX, 50, 150);
+                g2.drawString("Y: "+ gp.player.worldY, 50, 170);
+                g2.drawString("Col: "+ (int)(gp.player.worldX / gp.tileSize + 1), 50, 200);
+                g2.drawString("Row: "+ (int)(gp.player.worldY / gp.tileSize + 2), 50, 230);
 
 
                 // TEXT MSG
@@ -389,7 +393,7 @@ public class UI {
     }
 
     public void musicMenu() {
-        System.out.println("Aktualny stan gry: " + gp.gameState);
+        //System.out.println("Aktualny stan gry: " + gp.gameState);
 
         if (gp.gameState == gp.menuState) {
             if (!musicPlayed) {
