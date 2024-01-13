@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class NPC_Karol extends Entity{
 
+    private String dialogues[] = new String[3];
+
     public NPC_Karol(GamePanel gp){
 
         super(gp);
@@ -35,6 +37,10 @@ public class NPC_Karol extends Entity{
         }
     }
 
+    public void update(){
+
+    }
+
     public void setAction(){
 
         actionLockCounter ++;
@@ -59,16 +65,25 @@ public class NPC_Karol extends Entity{
         actionLockCounter = 0;
     }
 
-    public void setDialogue(){
-
-        dialogues[0] = "Hej, wiesz gdzie mamy zajecia?";
-
+    public void setDialogue() {
+        dialogues[0] = "";
+        dialogues[1] = "ESSA wiadomość";
+        dialogues[2] = "WSSA wiadomość";
     }
 
-    public void speak(){
 
-        gp.ui.correntDialogue = dialogues[currentDialogueIndex];
 
+    public void speak() {
+        System.out.println("Dialog [" + currentDialogueIndex + "]: " + dialogues[currentDialogueIndex]);
+        currentDialogueIndex++;
+        System.out.println(dialogues.length);
+
+        if (currentDialogueIndex < dialogues.length){
+            gp.ui.correntDialogue = dialogues[currentDialogueIndex];
+        } else{
+            gp.gameState = gp.playState;
+            currentDialogueIndex = 0;
+        }
     }
 
 }

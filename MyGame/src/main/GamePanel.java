@@ -109,18 +109,13 @@ public class GamePanel extends JPanel implements Runnable{
     public void update(){
         ui.musicMenu();
 
-        for (int i = 0; i < npc.length; i++) {
-            if (npc[i] != null) {
-                npc[i].update();
-                if (gameState == dialogueState) {
-                    npc[i].updateDialogue();
-                }
-            }
-        }
+
 
         if(gameState == playState){
             // PLAYER
             player.update();
+
+
 
             // BULLETS
             for (int i = 0; i < player.maxBullets; i++) {
@@ -147,14 +142,19 @@ public class GamePanel extends JPanel implements Runnable{
                     }
                 }
             }
+        } else if(gameState == stopState){
 
+        } else if (gameState == dialogueState) {
+            // DIALOGI
+            for (int i = 0; i < npc.length; i++) {
+                if (npc[i] != null) {
+                    npc[i].update();
+                    if (gameState == dialogueState) {
+                        npc[i].updateDialogue();
+                    }
+                }
+            }
         }
-        else if(gameState == stopState){
-
-        }
-
-
-
     }
 
     public void paintComponent(Graphics g){
