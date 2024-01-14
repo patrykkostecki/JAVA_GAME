@@ -8,12 +8,15 @@ import java.util.Random;
 
 public class NPC_Kasia extends Entity{
 
+    private String dialogues[] = new String[2];
+
     public NPC_Kasia(GamePanel gp){
 
         super(gp);
 
         direction = "standing";
         speed = 1;
+        foundTube = false;
 
         getNPCImage();
         setDialogue();
@@ -79,13 +82,36 @@ public class NPC_Kasia extends Entity{
     public void setDialogue(){
 
         dialogues[0] = "";
-
+        dialogues[1] = "We no ogarnij mi 3 probowki";
+        if (gp.player.tube == 3){
+            dialogues = new String[2];
+            dialogues[0] = "";
+            dialogues[1] = "Dziękuję za te 3 probówki, bez ciebie by sie to nie udalo!";
+            if (currentDialogueIndex > 0){
+                foundTube = true;
+                gp.player.tube = 0;
+                System.out.println(gp.player.tube);
+                currentDialogueIndex = 0;
+            }
+        }
+        if (foundTube == true){
+            dialogues = new String[2];
+            dialogues[0] = "";
+            dialogues[1] = "Teraz mozesz zrobic to i tamto";
+        }
     }
 
-    public void speak(){
+    public void speak() {
+        System.out.println("Dialog [" + currentDialogueIndex + "]: " + dialogues[currentDialogueIndex]);
+        currentDialogueIndex++;
+        System.out.println(dialogues.length);
 
-        gp.ui.correntDialogue = dialogues[currentDialogueIndex];
-
+        if (currentDialogueIndex < dialogues.length){
+            gp.ui.correntDialogue = dialogues[currentDialogueIndex];
+        } else{
+            gp.gameState = gp.playState;
+            currentDialogueIndex = 0;
+        }
     }
 
 }

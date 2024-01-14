@@ -55,13 +55,24 @@ public class AssetSetter {
         gp.obj[8].worldX = 39 * gp.tileSize;
         gp.obj[8].worldY = 11 * gp.tileSize;
 
+        gp.obj[9] = new Tube();
+        gp.obj[9].worldX = 27 * gp.tileSize;
+        gp.obj[9].worldY = 11 * gp.tileSize;
+
+        gp.obj[11] = new Tube();
+        gp.obj[11].worldX = 28 * gp.tileSize;
+        gp.obj[11].worldY = 11 * gp.tileSize;
+
+        gp.obj[12] = new Tube();
+        gp.obj[12].worldX = 29 * gp.tileSize;
+        gp.obj[12].worldY = 11 * gp.tileSize;
     }
 
     public void setNPC(){
 
-        gp.npc[0] = new NPC_Dendzik(gp);
-        gp.npc[0].worldX = 28 * gp.tileSize;
-        gp.npc[0].worldY = 17 * gp.tileSize;
+        gp.npc[23] = new NPC_Dendzik(gp);
+        gp.npc[23].worldX = 28 * gp.tileSize;
+        gp.npc[23].worldY = 17 * gp.tileSize;
 
         gp.npc[1] = new NPC_Ochrona_Man(gp);
         gp.npc[1].worldX = 47 * gp.tileSize;

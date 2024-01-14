@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class NPC_Martwy_Man extends Entity{
 
+    private String dialogues[] = new String[4];
+
     public NPC_Martwy_Man(GamePanel gp){
 
         super(gp);
@@ -62,13 +64,21 @@ public class NPC_Martwy_Man extends Entity{
     public void setDialogue(){
 
         dialogues[0] = "Uhhhhh, czy ja umieram!?";
+        dialogues[1] = "Uhhhhh, czy ja umieram!?";
 
     }
 
-    public void speak(){
+    public void speak() {
+        System.out.println("Dialog [" + currentDialogueIndex + "]: " + dialogues[currentDialogueIndex]);
+        currentDialogueIndex++;
+        System.out.println(dialogues.length);
 
-        gp.ui.correntDialogue = dialogues[currentDialogueIndex];
-
+        if (currentDialogueIndex < dialogues.length){
+            gp.ui.correntDialogue = dialogues[currentDialogueIndex];
+        } else{
+            gp.gameState = gp.playState;
+            currentDialogueIndex = 0;
+        }
     }
 
 }

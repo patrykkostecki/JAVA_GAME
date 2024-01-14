@@ -1,10 +1,7 @@
 package main;
 
 import entity.NPC_Dendzik;
-import object.Heart;
-import object.Key;
-import object.Logo;
-import object.SuperObject;
+import object.*;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -20,7 +17,7 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial_20, arial_40, arial_80;
-    BufferedImage keyImage;
+    BufferedImage keyImage, tubeImage;
     BufferedImage heart_full, heart_half, heart_blank;
     BufferedImage mainLogo;
     public boolean messageOn = false;
@@ -43,6 +40,10 @@ public class UI {
         arial_20 = new Font("Arial", Font.PLAIN, 20);
         Key key = new Key();
         keyImage = key.image;
+
+        Tube tube = new Tube();
+        tubeImage = tube.image;
+
 
         // HUD
         SuperObject heart = new Heart(gp);
@@ -121,6 +122,10 @@ public class UI {
 
 
             } else{
+
+                if(gp.player.tube > 0){
+                    drawTube();
+                }
 
                 g2.setFont(arial_20);
                 g2.setColor(Color.black);
@@ -201,9 +206,6 @@ public class UI {
             x+=gp.tileSize;
 
         }
-
-
-
     }
 
 
@@ -363,8 +365,6 @@ public class UI {
             g2.drawString(line,x,y);
             y += 40;
         }
-
-
     }
 
     public void drawSubWindow(int x, int y, int width, int height){
@@ -393,6 +393,19 @@ public class UI {
         g2.setColor(color);
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x + 3, y+3, width-10, height-10,25,25);
+    }
+
+    public void drawTube(){
+        int x = gp.tileSize/2 + 600;
+        int y = gp.tileSize/2 + 470;
+        String text = " : ";
+        if (gp.player.tube > 0){
+            System.out.println("ES");
+            g2.setFont(arial_20);
+            g2.setColor(Color.white);
+            g2.drawImage(tubeImage,x ,y , gp.tileSize, gp.tileSize, null);
+            g2.drawString(text + gp.player.tube,x + 50,y + 30);
+        }
     }
 
     public int centerX(String text){

@@ -29,6 +29,7 @@ public class Player extends Entity{
     public int needExp;
     public int damage;
     public int gold;
+    public int tube;
 
     public Player(GamePanel gp, KeyHandler keyH){
 
@@ -71,6 +72,7 @@ public class Player extends Entity{
          needExp = 10;
          damage = 1;
          gold = 0;
+         tube = 0;
     }
 
     public void getPlayerImage(){
@@ -451,6 +453,15 @@ public class Player extends Entity{
                     gp.ui.showMessage("Dodatkowa amunicja");
                     gp.player.ammo += 20;
                     gp.obj[i] = null;
+                    break;
+                case "Tube":
+                    gp.player.tube += 1;
+                    gp.obj[i] = null;
+                    break;
+
+
+
+
             }
         }
     }

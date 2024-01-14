@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class NPC_Karol extends Entity{
 
-    private String dialogues[] = new String[3];
+    private String dialogues[] = new String[4];
 
     public NPC_Karol(GamePanel gp){
 
@@ -69,6 +69,7 @@ public class NPC_Karol extends Entity{
         dialogues[0] = "";
         dialogues[1] = "ESSA wiadomość";
         dialogues[2] = "WSSA wiadomość";
+        dialogues[3] = "WSSA w2iadomość";
     }
 
 

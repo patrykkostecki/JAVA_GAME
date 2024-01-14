@@ -44,6 +44,7 @@ public class Entity {
     public int maxLife;
     public int life;
     public String name;
+    public boolean foundTube;
 
 
     public Entity(GamePanel gp) {
@@ -65,6 +66,7 @@ public class Entity {
     public void update(){
 
         setAction();
+        setDialogue();
 
         colissionOn = false;
         gp.ck.checkTile(this);

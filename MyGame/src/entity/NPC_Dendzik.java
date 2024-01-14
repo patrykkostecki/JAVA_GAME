@@ -8,17 +8,16 @@ import java.util.Random;
 
 public class NPC_Dendzik extends Entity{
 
+    private String dialogues[] = new String[2];
     public NPC_Dendzik(GamePanel gp){
 
         super(gp);
 
-        direction = "down";
+        direction = "standing";
         speed = 1;
 
         getNPCImage();
-        speak();
         setDialogue();
-        setAction();
 
     }
 
@@ -76,22 +75,30 @@ public class NPC_Dendzik extends Entity{
             }
             actionLockCounter = 0;
         }
-
     }
 
     public void setDialogue(){
 
-        dialogues[0] = "";
-        dialogues[1] = "";
-        dialogues[2] = "";
-        dialogues[3] = "";
-
+        if (gp.player.level < 4){
+            dialogues[0] = "";
+            dialogues[1] = "Musisz wbić 4 lvl!";
+        } else if (gp.player.level >= 4){
+            dialogues[0] = "";
+            dialogues[1] = "Udało Ci sie!";
+        }
     }
 
-    public void speak(){
+    public void speak() {
+        System.out.println("Dialog [" + currentDialogueIndex + "]: " + dialogues[currentDialogueIndex]);
+        currentDialogueIndex++;
+        System.out.println(dialogues.length);
 
-        gp.ui.correntDialogue = dialogues[currentDialogueIndex];
-
+        if (currentDialogueIndex < dialogues.length){
+            gp.ui.correntDialogue = dialogues[currentDialogueIndex];
+        } else{
+            gp.gameState = gp.playState;
+            currentDialogueIndex = 0;
+        }
     }
 
 }

@@ -8,7 +8,10 @@ import java.util.Random;
 
 public class NPC_Grzybo extends Entity{
 
+    private String dialogues[] = new String[2];
+
     public NPC_Grzybo(GamePanel gp){
+
 
         super(gp);
 
@@ -16,9 +19,11 @@ public class NPC_Grzybo extends Entity{
         speed = 1;
 
         getNPCImage();
-        speak();
         setDialogue();
-        setAction();
+
+    }
+
+    public void update(){
 
     }
 
@@ -83,13 +88,21 @@ public class NPC_Grzybo extends Entity{
     public void setDialogue(){
 
         dialogues[0] = "";
+        dialogues[1] = "Siema jestem grzybo";
 
     }
 
-    public void speak(){
+    public void speak() {
+        System.out.println("Dialog [" + currentDialogueIndex + "]: " + dialogues[currentDialogueIndex]);
+        currentDialogueIndex++;
+        System.out.println(dialogues.length);
 
-        gp.ui.correntDialogue = dialogues[currentDialogueIndex];
-
+        if (currentDialogueIndex < dialogues.length){
+            gp.ui.correntDialogue = dialogues[currentDialogueIndex];
+        } else{
+            gp.gameState = gp.playState;
+            currentDialogueIndex = 0;
+        }
     }
 
 }
