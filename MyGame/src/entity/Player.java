@@ -64,8 +64,8 @@ public class Player extends Entity{
          worldY = 450;
          speed = 4;
          direction = "down";
-         maxLife = 6;
-         life = 6;
+         maxLife = 15;
+         life = 15;
          ammo = 10;
          level = 1;
          exp = 0;

@@ -31,7 +31,7 @@ public class Entity {
     public int actionLockCounter = 0;
     public boolean invincible = false;
     public int invincibleCounter = 0;
-    public String dialogues[] = new String[20];
+    public String dialogues[] = new String[5000];
     public int bulletCooldown = 0;
     public int bulletCooldownTime = 30;
     public int currentDialogueIndex = 0;
