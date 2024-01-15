@@ -82,9 +82,13 @@ public class NPC_Bubi extends Entity{
 
     public void setDialogue(){
 
-        dialogues[0] = "";
-        dialogues[1] = "";
-
+        if (gp.player.level < 4){
+            dialogues[0] = "";
+            dialogues[1] = "Musisz wbić 4 lvl!";
+        } else if (gp.player.level >= 4){
+            dialogues[0] = "";
+            dialogues[1] = "Udało Ci sie!";
+        }
     }
 
     public void speak() {

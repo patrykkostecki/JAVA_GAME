@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UI {
 
@@ -212,14 +213,40 @@ public class UI {
     //TŁA
     BufferedImage backgroundImg;
     BufferedImage characterSelectBackgroundImg;
+    BufferedImage IntroBackgroundImg;
 
     public void loadBackgrounds() {
         try {
             backgroundImg = ImageIO.read(getClass().getResourceAsStream("/tiles/tlo.png"));
             characterSelectBackgroundImg = ImageIO.read(getClass().getResourceAsStream("/tiles/tlo.png"));
+            IntroBackgroundImg = ImageIO.read(getClass().getResourceAsStream("/tiles/tlo2.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private ArrayList<String> splitTextIntoLines(String text) {
+        ArrayList<String> lines = new ArrayList<>();
+        String[] words = text.split(" ");
+        StringBuilder line = new StringBuilder();
+        int wordCount = 0;
+
+        for (String word : words) {
+            line.append(word).append(" ");
+            wordCount++;
+
+            if (wordCount >= 10) {
+                lines.add(line.toString().trim());
+                line = new StringBuilder();
+                wordCount = 0;
+            }
+        }
+
+        if (line.length() > 0) {
+            lines.add(line.toString().trim());
+        }
+
+        return lines;
     }
 
     public void drawMenuScreen(){
@@ -250,8 +277,8 @@ public class UI {
             g2.drawImage(mainLogo, x - 30, y + 60, gp.tileSize * 3, gp.tileSize * 3, null);
 
             // MENU
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
-            text = "NOWA GRA";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+            text = "Graj!";
             x = centerX(text);
             y += gp.tileSize * 6;
             g2.drawString(text, x, y);
@@ -260,7 +287,7 @@ public class UI {
             }
 
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
-            text = "WCZYTAJ GRĘ";
+            text = "";
             x = centerX(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
@@ -268,8 +295,8 @@ public class UI {
                 g2.drawString(">",x-gp.tileSize,y);
             }
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
-            text = "WYJDZ Z GRY";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30F));
+            text = "Wyjdz z gry";
             x = centerX(text);
             y += gp.tileSize;
             g2.drawString(text, x, y);
@@ -284,15 +311,15 @@ public class UI {
 
             // WYBOR POSTACI
             g2.setColor(Color.white);
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 45F));
 
-            String text = "WYBIERZ CHOPKA";
+            String text = "Wybierz Postać:";
             int x = centerX(text);
             int y = gp.tileSize * 3;
             g2.drawString(text,x,y);
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
-            text = "LEOKADIA";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+            text = "Leokadia";
             x = centerX(text);
             y += gp.tileSize * 3;
             g2.drawString(text,x,y);
@@ -300,8 +327,8 @@ public class UI {
                 g2.drawString(">",x - gp.tileSize,y);
             }
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
-            text = "PATRYK";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+            text = "Patryk";
             x = centerX(text);
             y += gp.tileSize;
             g2.drawString(text,x,y);
@@ -309,8 +336,8 @@ public class UI {
                 g2.drawString(">",x - gp.tileSize,y);
             }
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
-            text = "SZYMON";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+            text = "Szymon";
             x = centerX(text);
             y += gp.tileSize;
             g2.drawString(text,x,y);
@@ -318,8 +345,8 @@ public class UI {
                 g2.drawString(">",x - gp.tileSize,y);
             }
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
-            text = "WROC";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30F));
+            text = "Wróć";
             x = centerX(text);
             y += gp.tileSize * 3;
             g2.drawString(text,x,y);
@@ -327,14 +354,46 @@ public class UI {
                 g2.drawString(">",x - gp.tileSize,y);
             }
         } else if (titleScreenState == 3) {
+            if (characterSelectBackgroundImg != null) {
+                g2.drawImage(IntroBackgroundImg, 0, 0, gp.screenWidth, gp.screenHeight, null);
+            }
             // INTRODUCION
             g2.setColor(Color.white);
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 38F));
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 13));
 
-            String text = "TU SE DAJ TEKST ESSA";
-            int x = centerX(text);
-            int y = gp.tileSize * 3;
-            g2.drawString(text,x,y);
+            String introText = "Wśród cichych korytarzy Uniwersytetu Śląskiego, gdzie naukowe dyskursy i debaty tętniły \n" +
+                    "życiem w świetle dnia, zapadła noc i przyniosła ze sobą ciszę, która była tylko pozornie\n" +
+                    "spokojna. W głębi jednego z najbardziej strzeżonych laboratoriów, w sercu kompleksu\n" +
+                    "badawczego, naukowcy pracowali nieustannie, oddani poszukiwaniom, które miały\n" +
+                    "przynieść odpowiedzi na niektóre z najbardziej palących pytań współczesnej medycyny.\n" +
+                    "" +
+                    "\n" +
+                    "Nieświadomi ironii losu, prowadzili eksperymenty na wirusie, który miał potencjał leczyć, ale" +
+                    "zdarzeń, ich najnowsze odkrycie - wirus o nieznanych możliwościach i niewyobrażalnej" +
+                    "mocy - wymknął się spod kontroli." +
+                    "" +
+                    "\n" +
+                    "Początkowo był to tylko szept, plotka przemykająca przez szpary w drzwiach laboratorium," +
+                    "ale wkrótce potwierdziła się najgorsza możliwa rzeczywistość. Wirus, wyhodowany i" +
+                    "pielęgnowany w szklanych kolbach i bioreaktorach, znalazł drogę na zewnątrz, przenikając" +
+                    "przez ściany Uniwersytetu i wprowadzając element chaosu do uporządkowanego świata nauki" +
+                    "Mieszkańcy Katowic, nieświadomi niebezpieczeństwa czającego się w cieniu ich miasta, " +
+                    "kontynuowali swoje codzienne życie. Tymczasem zegar tykał nieubłaganie, a zagrożenie" +
+                    "rozprzestrzeniało się w przestrzeni miejskiej, czekając cierpliwie na moment, kiedy będzie mogło uderzyć." +
+                    "" +
+                    "\n" +
+                    "Tak rozpoczyna się nasza historia, opowieść o przebudzeniu, walce i nadziei, która splata w" +
+                    "sobie losy indywidualistów i społeczności, ludzi i miejsc, której konsekwencje rozciągną się" +
+                    "daleko poza granice miasta.\n";
+
+            ArrayList<String> lines = splitTextIntoLines(introText);
+            int y = gp.tileSize * 2;
+
+            for (String line : lines) {
+                int x = centerX(line);
+                g2.drawString(line, x, y);
+                y += g2.getFontMetrics().getHeight();
+            }
         }
     }
 
@@ -348,23 +407,39 @@ public class UI {
 
     }
 
-    public void drawDialogueScreen(){
+    public void drawDialogueScreen() {
 
         // WINDOW
-        int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
-        int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 5;
+        int windowPadding = gp.tileSize; // Zmniejszenie paddingu, aby okno było większe
+        int x = windowPadding; // Zmniejszony padding po lewej stronie
+        int y = gp.tileSize / 2; // Możesz dostosować, jeśli chcesz zmienić położenie w pionie
+        int width = gp.screenWidth - (windowPadding * 2); // Szerokość jest teraz większa, ponieważ mniejszy padding
+        int height = gp.tileSize * 6; // Zwiększenie wysokości okna
 
-        drawSubWindow(x,y,width,height);
+        drawSubWindow(x, y, width, height);
 
-        x += gp.tileSize;
-        y += gp.tileSize;
+        // Ustawienie czcionki
+        Font myFont = new Font("Arial", Font.PLAIN, 20); // zmień "Arial" na nazwę twojej czcionki i 20 na pożądany rozmiar
+        g2.setFont(myFont);
 
-        for (String line : correntDialogue.split("\n")){
-            g2.drawString(line,x,y);
-            y += 40;
+        // Ustawienie obszaru klipowania
+        g2.setClip(x, y, width, height); // ogranicza rysowanie tekstu do obszaru okna
+
+        // Rysowanie tekstu
+        int textY = y + gp.tileSize;
+        for (String line : correntDialogue.split("\n")) {
+            int lineWidth = g2.getFontMetrics().stringWidth(line); // mierzenie szerokości linii
+            int textX = x + (width - lineWidth) / 2; // wyśrodkowanie tekstu w oknie
+
+            g2.drawString(line, textX, textY);
+            textY += 40;
+            if (textY > y + height - gp.tileSize) {
+                break; // zapobiega wyjściu tekstu poza dolną krawędź okna
+            }
         }
+
+        // Usuwanie obszaru klipowania
+        g2.setClip(null);
     }
 
     public void drawSubWindow(int x, int y, int width, int height){

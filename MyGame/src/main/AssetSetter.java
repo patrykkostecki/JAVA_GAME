@@ -56,16 +56,16 @@ public class AssetSetter {
         gp.obj[8].worldY = 11 * gp.tileSize;
 
         gp.obj[9] = new Tube();
-        gp.obj[9].worldX = 27 * gp.tileSize;
-        gp.obj[9].worldY = 11 * gp.tileSize;
+        gp.obj[9].worldX = 52 * gp.tileSize;
+        gp.obj[9].worldY = 69 * gp.tileSize;
 
         gp.obj[11] = new Tube();
-        gp.obj[11].worldX = 28 * gp.tileSize;
-        gp.obj[11].worldY = 11 * gp.tileSize;
+        gp.obj[11].worldX = 60 * gp.tileSize;
+        gp.obj[11].worldY = 83 * gp.tileSize;
 
         gp.obj[12] = new Tube();
-        gp.obj[12].worldX = 29 * gp.tileSize;
-        gp.obj[12].worldY = 11 * gp.tileSize;
+        gp.obj[12].worldX = 41 * gp.tileSize;
+        gp.obj[12].worldY = 90 * gp.tileSize;
     }
 
     public void setNPC(){

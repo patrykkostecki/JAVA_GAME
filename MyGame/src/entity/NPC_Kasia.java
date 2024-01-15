@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class NPC_Kasia extends Entity{
 
-    private String dialogues[] = new String[2];
+    private String dialogues[] = new String[7];
 
     public NPC_Kasia(GamePanel gp){
 
@@ -82,11 +82,49 @@ public class NPC_Kasia extends Entity{
     public void setDialogue(){
 
         dialogues[0] = "";
-        dialogues[1] = "We no ogarnij mi 3 probowki";
+        dialogues[1] = "(nie odrywając wzroku od swojego biurka,\n" +
+                " otoczonego przez migające ekrany i skomplikowane\n" +
+                " urządzenia) Ah, weszłeś.\n" +
+                " Profesor Dendzik przysłał cię, tak";
+        dialogues[2] = "(odwracając się, jej twarz odzwierciedla mieszankę\n" +
+                " zmęczenia i determinacji) Doskonale.\n" +
+                " Pracuję nad rozwiązaniem problemu z wirusem,\n" +
+                " wykorzystując do tego sztuczną inteligencję i sieci neuronowe.\n" +
+                " Udało nam się osiągnąć znaczny postęp, ale potrzebujemy\n" +
+                " więcej danych, aby w pełni zrozumieć mechanizmy działania wirusa\n" +
+                " i opracować skuteczne lekarstwo.\n";
+        dialogues[3] = "(pauza, w której profesor przegląda swoje notatki)";
+        dialogues[4] = "Niestety, nasze zasoby są ograniczone,\n" +
+                " a sytuacja na zewnątrz... jest daleka od stabilnej.\n" +
+                " Potrzebuję, abyś odzyskał trzy kapsuły z próbkami,\n" +
+                " które zgubiłam na południowej części kampusu. \n" +
+                "Ta strefa jest silnie zainfekowana, więc będzie to ryzykowne.\n" +
+                " Ale te próbki są niezbędne dla naszych badań.";
+        dialogues[5] ="Są dokładnie takie jak ten na moim biurku.\n" +
+                " Znajdziesz je prawdopodobnie w miejscach o największym\n" +
+                " stężeniu zakażenia czyli w południowym skrzydle uczelni.\n" +
+                " Bądź bardzo ostrożny. Obszar ten jest pełen zagrożeń\n " +
+                "i trudno przewidzieć, co możesz tam napotkać.\n" +
+                "Wystarczą 3 próbki.";
+        dialogues[6] = "Wracaj z nimi jak najszybciej cały i zdrowy!.";
         if (gp.player.tube == 3){
-            dialogues = new String[2];
+            dialogues = new String[6];
             dialogues[0] = "";
-            dialogues[1] = "Dziękuję za te 3 probówki, bez ciebie by sie to nie udalo!";
+            dialogues[1] = "(odwracając się z zaskoczeniem i radością)";
+            dialogues[2] = "To niesamowite! Nie spodziewałam się,\n" +
+                    " że tak szybko sobie poradzisz. Te próbki są \n" +
+                    "kluczowe dla naszych badań. Dzięki nim możemy \n" +
+                    "znacząco posunąć się naprzód w zrozumieniu wirusa\n" +
+                    " i opracowaniu skutecznego lekarstwa.";
+            dialogues[3] = "(bierze kapsuły i umieszcza je w specjalnym urządzeniu)";
+            dialogues[4] = "Teraz muszę skupić się na pracy.\n" +
+                    " Te dane mogą nam wiele wyjaśnić.\n" +
+                    " Dziękuję za twoją pomoc i odwagę";
+            dialogues[5] = "A. Profesor Bubak szukał cię,\n" +
+                    " kiedy byłeś po próbki. Powiedział,\n" +
+                    " że to pilne. Powinieneś go znaleźć \n" +
+                    "jak najszybciej. Jest w swojej sali na\n" +
+                    " lewo od wejścia bocznego uczelni.";
             if (currentDialogueIndex > 0){
                 foundTube = true;
                 gp.player.tube = 0;

@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class NPC_Wozna extends Entity{
 
-    private String dialogues[] = new String[3];
+    private String dialogues[] = new String[5];
     private boolean giveKey;
 
     public NPC_Wozna(GamePanel gp){
@@ -67,8 +67,21 @@ public class NPC_Wozna extends Entity{
 
     public void setDialogue() {
         dialogues[0] = "";
-        dialogues[1] = "Pierwsza wiadomość";
-        dialogues[2] = "Druga wiadomość";
+        dialogues[1] = "Jesteś! Przysięgam, każdy dzień wydaje się tu wiecznością\n" +
+                "Ta sytuacja jest nie do wytrzymania ludzie,\n" +
+                "którzy znamy, teraz. teraz. nie mogę nawet\n" +
+                "wypowiedzieć tego słowa. Niebezpieczeństwo czyha\n" +
+                "na każdym kroku, a nasze zasoby są na wyczerpaniu.\n";
+        dialogues[2] = "Amunicja się kończy, podobnie jak jedzenie.\n" +
+                "Te stwory... one były kiedyś naszymi przyjaciółmi,\n" +
+                "Ale teraz są bezwzględne, nie do poznania.\n" +
+                "Musimy działać, zanim będzie za późno.\n";
+        dialogues[3] = "(Woźna wyciąga klucz z kieszeni i podaje go z drżącą ręką.)\n";
+        dialogues[4] ="Wejdź przez boczne drzwi które są przed tobą i jak najszybciej\n" +
+                " znajdz profesora Dendzika.\n" +
+                "To on tutaj wszystkim zarządza i na pewno przyda \n" +
+                " mu się kolejna para rąk do pracy.“";
+
     }
 
 

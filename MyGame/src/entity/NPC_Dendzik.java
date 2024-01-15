@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class NPC_Dendzik extends Entity{
 
-    private String dialogues[] = new String[2];
+    private String dialogues[] = new String[8];
     public NPC_Dendzik(GamePanel gp){
 
         super(gp);
@@ -77,15 +77,32 @@ public class NPC_Dendzik extends Entity{
         }
     }
 
-    public void setDialogue(){
+    public void setDialogue() {
+        dialogues[0] = "";
+        dialogues[1] = "Jak się cieszę, że żyjesz! Od twojego\n" +
+                " ostatniego pobytu tutaj, wiele się zmieniło.\n" +
+                " To miejsce z tętniącej życiem uczelni stało się\n" +
+                " areną naszej walki o przetrwanie";
+        dialogues[2] = "(krótki moment milczenia, w którym profesor wydaje się zbierać myśli)";
+        dialogues[3] = "Wirus, który miał być naukowym przełomem,\n" +
+                " wymknął się spod kontroli. Co gorsza, mutuje z \n" +
+                "niezwykłą szybkością, tworząc formy, które są agresywne\n" +
+                " i nieprzewidywalne. Jesteśmy pod ostrzałem nie tylko biologicznym\n" +
+                ", ale i moralnym. Musimy znaleźć sposób, by to powstrzymać, zanim \n" +
+                "będzie za późno dla nas wszystkich.";
+        dialogues[4] ="(Profesor spogląda w kierunku drzwi obok)";
+        dialogues[5] = "Obok, w gabinecie po prawej stronie,\n" +
+                " jest Profesor Schmidt. Jest ona kluczową postacią\n" +
+                " w naszych badaniach nad wirusem. Niezwykle utalentowana\n" +
+                " i zdeterminowana osoba, ale obecnie znalazła się";
+        dialogues[6] ="w sytuacji krytycznej. Potrzebuje pomocy – zarówno w zakresie\n" +
+                " badań, jak i fizycznej ochrony. Zainfekowani są wszędzie, a jej \n" +
+                "praca jest niezwykle cenna dla naszych szans na \n" +
+                "powstrzymanie tego chaosu.";
+        dialogues[7] = "Proszę, udaj się do niej natychmiast.\n" +
+                " Każda sekunda jest cenna. I bądź ostrożny.\n" +
+                " Nie wiemy, co jeszcze może się wydarzyć.";
 
-        if (gp.player.level < 4){
-            dialogues[0] = "";
-            dialogues[1] = "Musisz wbić 4 lvl!";
-        } else if (gp.player.level >= 4){
-            dialogues[0] = "";
-            dialogues[1] = "Udało Ci sie!";
-        }
     }
 
     public void speak() {
