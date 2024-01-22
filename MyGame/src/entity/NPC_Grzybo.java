@@ -88,7 +88,7 @@ public class NPC_Grzybo extends Entity{
     public void setDialogue(){
 
         dialogues[0] = "";
-        dialogues[1] = "Siema jestem grzybo";
+        dialogues[1] = "Zaraz zaczynamy zajęcia!";
 
     }
 

@@ -67,9 +67,9 @@ public class NPC_Karol extends Entity{
 
     public void setDialogue() {
         dialogues[0] = "";
-        dialogues[1] = "ESSA wiadomość";
-        dialogues[2] = "WSSA wiadomość";
-        dialogues[3] = "WSSA w2iadomość";
+        dialogues[1] = "Siema stary!";
+        dialogues[2] = "Ładna dzisiaj pogoda";
+        dialogues[3] = "Do zobaczenia!";
     }
 
 
